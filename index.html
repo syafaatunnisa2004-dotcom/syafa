@@ -1,935 +1,806 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Al-Miftah — Portal Akademik PAI Kelas VIII</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bintang 8A | Portal PAI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --teal-950:#0A2C2A; --teal-900:#0F3733; --teal-800:#154842; --teal-700:#1D5C53;
-  --gold-500:#C9A24B; --gold-400:#DDBE71; --gold-200:#F0DFAE;
-  --parchment:#F6EFDC; --parchment-2:#FBF7EC;
-  --ink:#1C2622; --ink-soft:#4A5650;
-  --rust:#A85A32; --rust-soft:#F1DDCB;
-  --good:#3E7A5B; --good-soft:#DCEEE1;
-  --line:rgba(28,38,34,0.12);
-  --shadow: 0 10px 30px rgba(10,44,42,0.12);
-  --radius-s:6px; --radius-m:12px; --radius-l:20px;
-  --font-display:'Amiri', 'Noto Naskh Arabic', Georgia, serif;
-  --font-body:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --bg:#EFF3F7;--sf:#FFFFFF;--sf2:#F5F8FB;--ink:#131A45;--mut:#586187;--line:#D9E0EA;
+  --brand:#1B2A7A;--onbrand:#FFFFFF;--tq:#0B8F8A;--tqbg:#DCF3F1;--gold:#F2B233;--goldbg:#FFF0CC;
+  --rose:#C2334F;--rosebg:#FBE3E8;--ok:#1B8253;--okbg:#DBF2E5;--hero:#17206A;
+  --fd:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--fb:'Figtree','Segoe UI',system-ui,sans-serif;--fa:'Amiri','Traditional Arabic',serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --parchment:#182422; --parchment-2:#1E2C29; --ink:#F0E9D8; --ink-soft:#C8BFA8;
-    --line:rgba(240,233,216,0.14); --rust-soft:#3A2A20; --good-soft:#1E3128;
-    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --bg:#0B1030;--sf:#131A47;--sf2:#182052;--ink:#ECF0FF;--mut:#9BA4D2;--line:#28316B;
+    --brand:#8AA0FF;--onbrand:#0B1030;--tq:#3DD3CA;--tqbg:#0F3A4C;--gold:#F5C04E;--goldbg:#3B3218;
+    --rose:#FF7C95;--rosebg:#40202E;--ok:#5FD497;--okbg:#153A2C;--hero:#1A2472;
   }
 }
 :root[data-theme="dark"]{
-  --parchment:#182422; --parchment-2:#1E2C29; --ink:#F0E9D8; --ink-soft:#C8BFA8;
-  --line:rgba(240,233,216,0.14); --rust-soft:#3A2A20; --good-soft:#1E3128;
-  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --bg:#0B1030;--sf:#131A47;--sf2:#182052;--ink:#ECF0FF;--mut:#9BA4D2;--line:#28316B;
+  --brand:#8AA0FF;--onbrand:#0B1030;--tq:#3DD3CA;--tqbg:#0F3A4C;--gold:#F5C04E;--goldbg:#3B3218;
+  --rose:#FF7C95;--rosebg:#40202E;--ok:#5FD497;--okbg:#153A2C;--hero:#1A2472;
 }
-*{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
-body{font-family:var(--font-body); background:var(--parchment); color:var(--ink); min-height:100vh; -webkit-font-smoothing:antialiased;}
-h1,h2,h3,.serif{font-family:var(--font-display);}
-button{font-family:inherit; cursor:pointer;}
-::selection{background:var(--gold-400); color:var(--teal-950);}
-a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible{outline:2px solid var(--gold-500); outline-offset:2px;}
-@media (prefers-reduced-motion: reduce){ *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;} }
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.55}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--fd);margin:0;line-height:1.12;letter-spacing:-.01em}
+p{margin:0}
+.ar{font-family:var(--fa);direction:rtl;text-align:right;line-height:2.1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-.app{display:grid; grid-template-columns:264px 1fr; min-height:100vh;}
-@media (max-width:880px){ .app{grid-template-columns:1fr;} }
+/* ---------- Login ---------- */
+.login{min-height:100%;display:grid;grid-template-columns:1.05fr 1fr}
+.art{position:relative;overflow:hidden;background:var(--hero);color:#fff;display:flex;align-items:flex-end;padding:48px}
+.art .lattice{position:absolute;inset:0;opacity:.16}
+.art .spin{position:absolute;left:50%;top:44%;width:min(78%,560px);aspect-ratio:1;transform:translate(-50%,-50%)}
+.art .spin svg{position:absolute;inset:0;width:100%;height:100%}
+.art .s1{animation:rot 90s linear infinite}
+.art .s2{animation:rot 140s linear infinite reverse}
+@keyframes rot{to{transform:rotate(360deg)}}
+.art .big{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);font-family:var(--fd);font-weight:800;font-size:clamp(84px,14vw,168px);letter-spacing:-.05em;color:#fff;line-height:1}
+.art .cap{position:relative;max-width:420px}
+.art .cap h1{font-size:clamp(28px,3.2vw,40px);font-weight:700}
+.art .cap p{margin-top:10px;color:#C9D1FF;max-width:36ch}
+.panel{display:flex;flex-direction:column;justify-content:center;padding:48px clamp(24px,6vw,84px);background:var(--bg)}
+.panel h2{font-size:32px;font-weight:700}
+.panel .lead{color:var(--mut);margin-top:8px;max-width:44ch}
+.field{margin-top:20px;display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:600;font-size:15px}
+.field input{height:52px;border-radius:14px;border:1.5px solid var(--line);background:var(--sf);padding:0 16px;font-size:17px}
+.field input:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 20%,transparent)}
+.field small{color:var(--mut)}
+.err{min-height:24px;margin-top:12px;color:var(--rose);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 24px;border-radius:14px;border:0;background:var(--brand);color:var(--onbrand);font-weight:700;font-size:16px;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn.gold{background:var(--gold);color:#241A00}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--line)}
+.btn.sm{height:38px;padding:0 16px;font-size:14px;border-radius:11px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.roster{margin-top:22px;border:1px solid var(--line);border-radius:16px;background:var(--sf);padding:4px 16px}
+.roster summary{cursor:pointer;padding:12px 0;font-weight:600}
+.roster .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:4px;padding-bottom:12px;max-height:240px;overflow:auto}
+.roster button{display:flex;gap:10px;align-items:center;text-align:left;border:0;background:transparent;padding:6px 8px;border-radius:8px;font-size:14px}
+.roster button:hover{background:var(--sf2)}
+.roster b{min-width:26px;color:var(--brand)}
+.hint{margin-top:14px;font-size:14px;color:var(--mut)}
 
-.sidebar{
-  background:radial-gradient(circle at 15% 8%, rgba(201,162,75,0.14), transparent 45%), linear-gradient(180deg, var(--teal-950), var(--teal-900) 55%, var(--teal-800));
-  color:var(--gold-200); position:relative; display:flex; flex-direction:column; padding:28px 22px; overflow:hidden;
+/* ---------- App shell ---------- */
+.app{display:grid;grid-template-columns:236px 1fr;min-height:100%}
+.side{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;height:100dvh;background:var(--hero);color:#fff;display:flex;flex-direction:column;padding:22px 14px}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px 22px}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{font-family:var(--fd);font-size:20px;letter-spacing:-.02em}
+.brand span{display:block;font-size:12px;color:#B7C1FF;line-height:1.2}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav button{display:flex;align-items:center;gap:12px;height:46px;padding:0 14px;border:0;border-radius:13px;background:transparent;color:#D5DBFF;font-weight:600;text-align:left}
+.nav button:hover{background:rgba(255,255,255,.08)}
+.nav button[aria-current="page"]{background:var(--gold);color:#241A00}
+.side .me{margin-top:auto;display:flex;align-items:center;gap:10px;padding:12px 8px 0;border-top:1px solid rgba(255,255,255,.14)}
+.side .me .nm{font-weight:700;font-size:14px;line-height:1.25}
+.side .me .sb{font-size:12px;color:#B7C1FF}
+.av{width:38px;height:38px;border-radius:50%;background:var(--gold);color:#241A00;display:grid;place-items:center;font-weight:800;flex:none;font-family:var(--fd)}
+.iconbtn{margin-left:auto;background:transparent;border:0;color:#D5DBFF;padding:8px;border-radius:10px}
+.iconbtn:hover{background:rgba(255,255,255,.1)}
+.main{padding:28px clamp(18px,3.4vw,44px) 56px;min-width:0;max-width:1180px;width:100%}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+.top h1{font-size:clamp(26px,3vw,34px);font-weight:700;flex:1;min-width:180px}
+.chip{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:99px;background:var(--sf);border:1px solid var(--line);font-size:14px;font-weight:600}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--tq);display:block}
+.tabbar{display:none}
+
+/* ---------- Generic ---------- */
+.card{background:var(--sf);border:1px solid var(--line);border-radius:20px;padding:22px}
+.card h3{font-size:19px;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mut{color:var(--mut)}
+.row{display:flex;align-items:center;gap:12px}
+.between{justify-content:space-between}
+.stack>*+*{margin-top:12px}
+.pill{display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:99px;font-size:13px;font-weight:700;background:var(--sf2);color:var(--mut)}
+.pill.ok{background:var(--okbg);color:var(--ok)}
+.pill.warn{background:var(--goldbg);color:#8A5A00}
+:root[data-theme="dark"] .pill.warn{color:var(--gold)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pill.warn{color:var(--gold)}}
+.pill.bad{background:var(--rosebg);color:var(--rose)}
+.pill.info{background:var(--tqbg);color:var(--tq)}
+.empty{padding:26px;text-align:center;color:var(--mut);border:1.5px dashed var(--line);border-radius:16px}
+.back{background:transparent;border:0;color:var(--brand);font-weight:700;padding:6px 0;margin-bottom:14px;display:inline-flex;gap:6px;align-items:center}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--hero);color:#fff;border-radius:30px;padding:34px clamp(22px,4vw,44px);display:grid;grid-template-columns:1fr 250px;gap:24px;align-items:center;margin-bottom:22px}
+.hero h2{font-size:clamp(30px,4.2vw,50px);font-weight:800;letter-spacing:-.03em}
+.hero p{color:#C9D1FF;margin-top:10px;max-width:46ch}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px}
+.hero .facts div{font-size:13px;color:#B7C1FF}
+.hero .facts b{display:block;font-family:var(--fd);font-size:24px;color:#fff;letter-spacing:-.02em}
+.starbox{position:relative;width:100%;max-width:250px;aspect-ratio:1;margin-inline:auto}
+.starbox svg{width:100%;height:100%;overflow:visible}
+.starbox .ctr{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.starbox .ctr b{font-family:var(--fd);font-weight:800;font-size:clamp(38px,6vw,56px);letter-spacing:-.04em;line-height:1}
+.starbox .ctr span{font-size:13px;color:#B7C1FF;margin-top:4px}
+.starbox.lt .ctr span{color:var(--mut)}
+.starbox.lt .ctr b{color:var(--ink)}
+.prog-arc{transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+
+/* materi */
+.bab{display:flex;flex-direction:column;gap:10px;text-align:left;border:1px solid var(--line);background:var(--sf);border-radius:20px;padding:20px;min-height:170px;transition:border-color .15s,transform .15s}
+.bab:hover{border-color:var(--brand);transform:translateY(-2px)}
+.bab .no{font-family:var(--fd);font-weight:800;font-size:15px;color:var(--tq)}
+.bab h3{font-size:19px}
+.bab .ft{margin-top:auto;display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:14px}
+.article{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:start}
+.article .txt p{max-width:64ch;margin-top:12px}
+.article ul{padding-left:0;list-style:none;margin:14px 0 0}
+.article li{padding:11px 0 11px 30px;border-top:1px solid var(--line);position:relative}
+.article li::before{content:"";position:absolute;left:4px;top:19px;width:10px;height:10px;background:var(--tq);transform:rotate(45deg)}
+.dalil{background:var(--hero);color:#fff;border-radius:24px;padding:26px}
+.dalil .ar{font-size:30px;color:#fff}
+.dalil .src{color:var(--gold);font-weight:700;margin-top:14px}
+.dalil .idn{color:#C9D1FF;margin-top:6px;font-size:15px}
+
+/* tugas */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{height:38px;padding:0 16px;border-radius:99px;border:1px solid var(--line);background:var(--sf);font-weight:600;font-size:14px}
+.tabs button[aria-pressed="true"]{background:var(--brand);color:var(--onbrand);border-color:var(--brand)}
+.task{display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:var(--sf);border-radius:18px;padding:18px 20px}
+.task:hover{border-color:var(--brand)}
+.task h3{font-size:18px}
+.task .sub{color:var(--mut);font-size:14px}
+textarea{width:100%;min-height:150px;border-radius:14px;border:1.5px solid var(--line);background:var(--sf);padding:14px;resize:vertical;line-height:1.5}
+textarea:focus{border-color:var(--brand);outline:none}
+.fb{background:var(--goldbg);border-radius:14px;padding:14px 16px;margin-top:14px}
+
+/* kuis */
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--sf);border-radius:14px;padding:14px 16px;margin-top:10px;font-size:16px}
+.opt:hover:not([disabled]){border-color:var(--brand)}
+.opt .l{width:30px;height:30px;border-radius:50%;background:var(--sf2);display:grid;place-items:center;font-weight:700;flex:none;font-size:14px}
+.opt.right{border-color:var(--ok);background:var(--okbg)}
+.opt.wrong{border-color:var(--rose);background:var(--rosebg)}
+.opt[disabled]{cursor:default}
+.bar{height:8px;background:var(--sf2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--tq);border-radius:99px;transition:width .4s}
+
+/* nilai */
+.cmp{display:grid;grid-template-columns:110px 1fr 54px;gap:6px 14px;align-items:center;margin-top:16px}
+.track{position:relative;height:22px;background:var(--sf2);border-radius:8px}
+.track i{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:var(--brand)}
+.track u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--rose);text-decoration:none}
+.track em{position:absolute;left:0;bottom:-3px;height:4px;background:var(--gold);border-radius:4px}
+table{border-collapse:collapse;width:100%}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:15px;white-space:nowrap}
+th{font-size:13px;color:var(--mut);font-weight:600;background:var(--sf2)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--sf)}
+td input{width:66px;height:36px;border-radius:9px;border:1.5px solid var(--line);background:var(--sf);text-align:center}
+td.sticky,th.sticky{position:sticky;left:0;background:var(--sf);z-index:1}
+th.sticky{background:var(--sf2)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--mut);margin-top:14px}
+.legend span::before{content:"";display:inline-block;width:12px;height:8px;border-radius:3px;margin-right:6px;background:var(--brand)}
+.legend .g::before{background:var(--gold)}
+.legend .r::before{background:var(--rose);width:3px;height:14px;vertical-align:-3px}
+input[type=text].plain,select.plain{height:46px;width:100%;border-radius:12px;border:1.5px solid var(--line);background:var(--sf);padding:0 14px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:14px;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;z-index:50;max-width:90%}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .login{grid-template-columns:1fr}
+  .art{min-height:250px;padding:26px}
+  .art .spin{top:50%;width:min(70%,240px)}
+  .art .big{top:50%;font-size:72px}
+  .art .cap{display:none}
+  .panel{padding:28px 22px 40px}
+  .app{grid-template-columns:1fr}
+  .side{display:none}
+  .main{padding:18px 16px calc(96px + env(safe-area-inset-bottom,0px))}
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--hero);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+  .tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:transparent;color:#C3CBFF;font-size:11px;font-weight:600;padding:6px 0;border-radius:12px}
+  .tabbar button[aria-current="page"]{color:#241A00;background:var(--gold)}
+  .hero{grid-template-columns:1fr;padding:26px 22px}
+  .starbox{max-width:200px;order:-1;margin:0}
+  .grid2,.grid3,.article{grid-template-columns:1fr}
+  .mtop{display:flex}
 }
-.sidebar::before{
-  content:""; position:absolute; inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23C9A24B' stroke-width='0.6' opacity='0.16'%3E%3Cpath d='M60 6 L88 30 L114 60 L88 90 L60 114 L32 90 L6 60 L32 30 Z'/%3E%3Cpath d='M60 26 L78 42 L94 60 L78 78 L60 94 L42 78 L26 60 L42 42 Z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:120px 120px; pointer-events:none;
+.mtop{display:none}
+@media (max-width:900px){.mtop{display:inline-flex}}
+@media (prefers-reduced-motion:reduce){
+  .art .s1,.art .s2{animation:none}
+  .prog-arc,.bar i,.toast{transition:none}
 }
-@media (max-width:880px){ .sidebar{padding:18px 18px 8px;} }
-.brand{position:relative; z-index:1; display:flex; align-items:center; gap:12px; margin-bottom:30px;}
-.brand-mark{width:44px;height:44px;border-radius:12px; background:linear-gradient(145deg, var(--gold-400), var(--gold-500)); display:flex;align-items:center;justify-content:center; color:var(--teal-950); font-family:var(--font-display); font-weight:700; font-size:20px; flex:none; box-shadow:0 4px 14px rgba(0,0,0,0.25);}
-.brand-text .name{font-family:var(--font-display); font-size:19px; line-height:1.1; color:var(--parchment-2);}
-.brand-text .sub{font-size:11.5px; letter-spacing:.03em; color:var(--gold-400); margin-top:2px;}
-
-nav.mainnav{position:relative; z-index:1; display:flex; flex-direction:column; gap:4px; margin-bottom:auto;}
-@media (max-width:880px){ nav.mainnav{flex-direction:row; overflow-x:auto; gap:6px; padding-bottom:10px; margin-bottom:14px;} nav.mainnav::-webkit-scrollbar{display:none;} }
-.nav-btn{display:flex; align-items:center; gap:12px; background:transparent; border:none; color:var(--gold-200); padding:11px 13px; border-radius:10px; text-align:left; font-size:14.5px; font-weight:500; transition:background .15s ease, color .15s ease; white-space:nowrap;}
-.nav-btn svg{flex:none; opacity:.85;}
-.nav-btn:hover{background:rgba(255,255,255,0.06);}
-.nav-btn.active{background:linear-gradient(90deg, rgba(201,162,75,0.22), rgba(201,162,75,0.06)); color:var(--parchment-2); box-shadow:inset 3px 0 0 var(--gold-500);}
-@media (max-width:880px){ .nav-btn.active{box-shadow:inset 0 -3px 0 var(--gold-500);} }
-.nav-btn .lockdot{margin-left:auto; width:7px; height:7px; border-radius:50%; background:var(--rust); opacity:.8;}
-
-.sidebar-foot{position:relative; z-index:1; padding-top:18px; margin-top:18px; border-top:1px solid rgba(240,223,174,0.14); font-size:11.5px; color:var(--gold-400); line-height:1.6;}
-@media (max-width:880px){ .sidebar-foot{display:none;} }
-
-main{padding:30px 40px 60px; max-width:980px;}
-@media (max-width:880px){ main{padding:20px 18px 50px;} }
-
-.topbar{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:30px; gap:16px; flex-wrap:wrap;}
-.greeting .eyebrow{font-size:13px; color:var(--ink-soft);}
-.greeting h1{font-size:26px; margin:2px 0 0; font-weight:700; letter-spacing:.01em;}
-.topbar-right{display:flex; align-items:center; gap:14px;}
-.datebox{font-size:12.5px; color:var(--ink-soft); text-align:right; border-right:2px solid var(--gold-500); padding-right:12px;}
-
-.auth-chip{display:flex; align-items:center; gap:9px; background:var(--parchment-2); border:1px solid var(--line); border-radius:30px; padding:6px 8px 6px 6px; box-shadow:var(--shadow);}
-.auth-chip .av{width:30px;height:30px;border-radius:50%; background:linear-gradient(145deg, var(--teal-700), var(--teal-800)); color:var(--gold-200); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12.5px; flex:none;}
-.auth-chip .who{font-size:12.5px; line-height:1.25;}
-.auth-chip .who b{display:block; font-size:13px;}
-.auth-chip button{background:transparent; border:none; color:var(--rust); font-size:12px; font-weight:700; padding:4px 8px;}
-.login-btn{display:flex; align-items:center; gap:8px; background:var(--teal-800); color:var(--parchment-2); border:none; padding:10px 18px; border-radius:30px; font-size:13.5px; font-weight:700; box-shadow:var(--shadow);}
-.login-btn:hover{background:var(--teal-900);}
-
-.view{display:none; animation:fadein .35s ease;}
-.view.active{display:block;}
-@keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
-
-.section-head{margin-bottom:18px;}
-.section-head h2{font-size:22px; margin:0 0 4px;}
-.section-head p{margin:0; color:var(--ink-soft); font-size:14.5px; max-width:60ch;}
-
-.hero{position:relative; background:linear-gradient(135deg, var(--teal-900), var(--teal-700) 120%); border-radius:var(--radius-l); padding:34px 32px; color:var(--parchment-2); overflow:hidden; margin-bottom:20px;}
-.hero::after{content:""; position:absolute; right:-40px; top:-40px; width:220px; height:220px; background:radial-gradient(circle, rgba(201,162,75,0.25), transparent 70%);}
-.hero .arabic{font-family:var(--font-display); font-size:30px; direction:rtl; color:var(--gold-200); margin:0 0 8px; position:relative; z-index:1;}
-.hero .translation{font-size:15px; color:var(--parchment-2); opacity:.92; max-width:52ch; margin:0 0 4px; position:relative; z-index:1;}
-.hero .source{font-size:12.5px; color:var(--gold-400); position:relative; z-index:1;}
-
-.auth-teaser{display:flex; align-items:center; justify-content:space-between; gap:14px; background:var(--parchment-2); border:1px dashed var(--gold-500); border-radius:var(--radius-m); padding:16px 18px; margin-bottom:26px; flex-wrap:wrap;}
-.auth-teaser p{margin:0; font-size:13.8px; color:var(--ink);}
-.auth-teaser p b{color:var(--teal-800);}
-
-.stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:28px;}
-@media (max-width:720px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
-.stat-card{background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-m); padding:16px 16px 14px;}
-.stat-card .num{font-family:var(--font-display); font-size:28px; color:var(--teal-800); line-height:1;}
-.stat-card .lbl{font-size:12.5px; color:var(--ink-soft); margin-top:6px;}
-
-.split-2{display:grid; grid-template-columns:1.3fr 1fr; gap:18px;}
-@media (max-width:780px){ .split-2{grid-template-columns:1fr;} }
-.panel{background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-m); padding:18px 20px;}
-.panel h3{font-size:16px; margin:0 0 12px; font-family:var(--font-body); font-weight:700;}
-.mini-row{display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line); font-size:14px; gap:10px;}
-.mini-row:last-child{border-bottom:none;}
-.pill{font-size:11px; padding:3px 9px; border-radius:20px; font-weight:600; white-space:nowrap;}
-.pill.warn{background:var(--rust-soft); color:var(--rust);}
-.pill.good{background:var(--good-soft); color:var(--good);}
-.pill.gold{background:rgba(201,162,75,0.18); color:#8A6A22;}
-.pill.neutral{background:var(--line); color:var(--ink-soft);}
-
-.materi-card{background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-m); margin-bottom:14px; overflow:hidden;}
-.materi-head{display:flex; align-items:center; gap:16px; padding:16px 18px; cursor:pointer; user-select:none;}
-.materi-num{font-family:var(--font-display); font-size:22px; color:var(--gold-500); width:40px; flex:none; text-align:center;}
-.materi-titles{flex:1; min-width:0;}
-.materi-titles .bab{font-size:11.5px; color:var(--ink-soft); margin-bottom:2px;}
-.materi-titles h3{margin:0; font-size:16.5px; font-family:var(--font-body); font-weight:700;}
-.materi-status{flex:none;}
-.chev{transition:transform .25s ease; flex:none; color:var(--ink-soft);}
-.materi-card.open .chev{transform:rotate(180deg);}
-.materi-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
-.materi-card.open .materi-body{max-height:1400px;}
-.materi-body-inner{padding:0 18px 20px; border-top:1px solid var(--line); margin-top:0; padding-top:14px;}
-.materi-body-inner p{line-height:1.65; font-size:14.5px; color:var(--ink);}
-.materi-body-inner ul{margin:10px 0; padding-left:20px; font-size:14.5px; line-height:1.7;}
-.ayat-box{background:var(--parchment); border-left:3px solid var(--gold-500); border-radius:0 8px 8px 0; padding:12px 16px; margin:14px 0; font-size:13.5px;}
-.ayat-box .ar{font-family:var(--font-display); font-size:19px; direction:rtl; margin-bottom:6px; color:var(--teal-800);}
-.mark-btn{margin-top:8px; border:1.5px solid var(--gold-500); background:transparent; color:var(--gold-500); border-radius:8px; padding:8px 16px; font-size:13px; font-weight:700; transition:all .15s ease;}
-.mark-btn:hover{background:var(--gold-500); color:#fff;}
-.mark-btn.done{background:var(--good); border-color:var(--good); color:#fff;}
-.mark-btn.locked{opacity:.75;}
-
-.tugas-item{display:flex; gap:14px; align-items:flex-start; background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-m); padding:16px 18px; margin-bottom:12px;}
-.check-toggle{width:24px; height:24px; border-radius:7px; border:2px solid var(--gold-500); flex:none; display:flex; align-items:center; justify-content:center; margin-top:2px; background:transparent; transition:all .15s ease;}
-.check-toggle.on{background:var(--good); border-color:var(--good);}
-.tugas-text{flex:1; min-width:0;}
-.tugas-text h4{margin:0 0 3px; font-size:15px;}
-.tugas-text .meta{font-size:12.5px; color:var(--ink-soft); margin-bottom:6px;}
-.tugas-text p{margin:0; font-size:13.8px; color:var(--ink); line-height:1.55;}
-.tugas-item.done .tugas-text h4{text-decoration:line-through; color:var(--ink-soft);}
-
-.quiz-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
-@media (max-width:700px){ .quiz-grid{grid-template-columns:1fr;} }
-.quiz-card{background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-m); padding:18px; display:flex; flex-direction:column; gap:10px;}
-.quiz-card .bab{font-size:11.5px; color:var(--ink-soft);}
-.quiz-card h3{margin:0; font-size:16px;}
-.quiz-card .info{font-size:12.5px; color:var(--ink-soft);}
-.start-btn{align-self:flex-start; background:var(--teal-800); color:var(--parchment-2); border:none; padding:9px 18px; border-radius:8px; font-size:13.5px; font-weight:700; margin-top:4px; transition:background .15s ease;}
-.start-btn:hover{background:var(--teal-900);}
-.retake-btn{align-self:flex-start; background:transparent; color:var(--teal-800); border:1.5px solid var(--teal-800); padding:8px 16px; border-radius:8px; font-size:13px; font-weight:700; margin-top:4px;}
-
-.quiz-runner{background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-l); padding:26px 28px;}
-.quiz-runner .qprog{font-size:12.5px; color:var(--ink-soft); margin-bottom:6px;}
-.quiz-runner .qprog-track{height:5px; background:var(--line); border-radius:4px; margin-bottom:22px; overflow:hidden;}
-.quiz-runner .qprog-fill{height:100%; background:var(--gold-500);}
-.q-text{font-size:17px; font-weight:600; margin-bottom:16px; line-height:1.5;}
-.opt{display:flex; align-items:center; gap:12px; padding:13px 15px; border:1.5px solid var(--line); border-radius:10px; margin-bottom:10px; cursor:pointer; transition:all .12s ease; font-size:14.5px;}
-.opt:hover{border-color:var(--gold-400);}
-.opt.selected{border-color:var(--gold-500); background:rgba(201,162,75,0.1);}
-.opt .letter{width:26px; height:26px; border-radius:50%; border:1.5px solid var(--ink-soft); flex:none; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--ink-soft);}
-.opt.selected .letter{background:var(--gold-500); border-color:var(--gold-500); color:#fff;}
-.opt.correct{border-color:var(--good); background:var(--good-soft);}
-.opt.correct .letter{background:var(--good); border-color:var(--good); color:#fff;}
-.opt.wrong{border-color:var(--rust); background:var(--rust-soft);}
-.opt.wrong .letter{background:var(--rust); border-color:var(--rust); color:#fff;}
-.quiz-nav{display:flex; justify-content:space-between; margin-top:22px;}
-.nav-arrow{background:var(--teal-800); color:#fff; border:none; padding:10px 20px; border-radius:8px; font-size:13.5px; font-weight:700;}
-.nav-arrow:disabled{opacity:.4; cursor:not-allowed;}
-.nav-arrow.ghost{background:transparent; color:var(--teal-800); border:1.5px solid var(--teal-800);}
-
-.result-box{text-align:center; padding:18px 0 6px;}
-.result-box .score-ring{width:120px; height:120px; border-radius:50%; margin:0 auto 16px; display:flex; align-items:center; justify-content:center; flex-direction:column; background:conic-gradient(var(--gold-500) calc(var(--pct)*1%), var(--line) 0);}
-.result-box .score-ring .inner{width:96px; height:96px; border-radius:50%; background:var(--parchment-2); display:flex; align-items:center; justify-content:center; flex-direction:column;}
-.result-box .score-ring .inner b{font-size:24px; font-family:var(--font-display);}
-.result-box .score-ring .inner span{font-size:11px; color:var(--ink-soft);}
-.result-box .predikat{font-size:15px; font-weight:700; margin-bottom:4px;}
-.result-box .desc{font-size:13.5px; color:var(--ink-soft); margin-bottom:18px;}
-.review-list{text-align:left; margin-top:10px;}
-.review-item{padding:10px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
-.review-item .qi{font-weight:600; margin-bottom:4px;}
-.review-item .ai{color:var(--ink-soft);}
-.review-item .ai.wrong{color:var(--rust);}
-.review-item .ai.right{color:var(--good);}
-
-.nilai-summary{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:22px;}
-@media (max-width:700px){ .nilai-summary{grid-template-columns:1fr;} }
-.chart-panel{background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-m); padding:20px; margin-bottom:20px;}
-.bar-row{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
-.bar-row .lab{width:190px; flex:none; font-size:13px; color:var(--ink);}
-.bar-track{flex:1; height:14px; background:var(--line); border-radius:8px; overflow:hidden;}
-.bar-fill{height:100%; background:linear-gradient(90deg, var(--teal-700), var(--gold-500)); border-radius:8px; transition:width .5s ease;}
-.bar-row .val{width:38px; flex:none; text-align:right; font-size:13px; font-weight:700;}
-table.nilai-table{width:100%; border-collapse:collapse; background:var(--parchment-2); border-radius:var(--radius-m); overflow:hidden; border:1px solid var(--line);}
-table.nilai-table th, table.nilai-table td{padding:12px 14px; text-align:left; font-size:13.8px; border-bottom:1px solid var(--line);}
-table.nilai-table th{background:var(--teal-900); color:var(--parchment-2); font-weight:600; font-size:12.5px;}
-table.nilai-table tr:last-child td{border-bottom:none;}
-.empty-note{padding:14px; font-size:13.5px; color:var(--ink-soft); text-align:center;}
-.overflow-x{overflow-x:auto;}
-
-.info-item{display:flex; gap:14px; background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-m); padding:16px 18px; margin-bottom:12px;}
-.info-date{flex:none; width:58px; text-align:center; border-right:1px solid var(--line); padding-right:14px;}
-.info-date .d{font-family:var(--font-display); font-size:20px; color:var(--teal-800); line-height:1;}
-.info-date .m{font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em;}
-.info-body h4{margin:0 0 4px; font-size:14.8px;}
-.info-body p{margin:0; font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
-
-/* ---- Riwayat gate (not logged in) ---- */
-.gate-box{background:var(--parchment-2); border:1px solid var(--line); border-radius:var(--radius-l); padding:44px 30px; text-align:center; max-width:440px; margin:20px auto;}
-.gate-box .icon{width:56px;height:56px;border-radius:50%; background:var(--teal-900); color:var(--gold-300,var(--gold-400)); display:flex; align-items:center; justify-content:center; margin:0 auto 16px;}
-.gate-box h3{margin:0 0 8px; font-size:18px;}
-.gate-box p{margin:0 0 20px; font-size:13.8px; color:var(--ink-soft); line-height:1.6;}
-
-/* ---- Riwayat sub-sections ---- */
-.riwayat-head{display:flex; align-items:center; gap:14px; background:var(--teal-900); color:var(--parchment-2); border-radius:var(--radius-m); padding:18px 20px; margin-bottom:22px;}
-.riwayat-head .av{width:46px;height:46px;border-radius:50%; background:var(--gold-500); color:var(--teal-950); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:17px; flex:none;}
-.riwayat-head h2{margin:0; font-size:18px; color:var(--parchment-2); font-family:var(--font-body);}
-.riwayat-head .k{font-size:12.5px; color:var(--gold-400);}
-.subhead{font-size:15px; font-weight:700; margin:26px 0 12px;}
-.status-list{display:flex; flex-direction:column; gap:8px;}
-.status-row{display:flex; justify-content:space-between; align-items:center; background:var(--parchment-2); border:1px solid var(--line); border-radius:10px; padding:12px 16px; font-size:14px;}
-
-/* ---- Modal (login) ---- */
-.modal-overlay{position:fixed; inset:0; background:rgba(10,30,28,0.55); display:none; align-items:center; justify-content:center; z-index:100; padding:18px;}
-.modal-overlay.open{display:flex;}
-.modal-box{background:var(--parchment-2); border-radius:var(--radius-l); width:100%; max-width:420px; max-height:86vh; display:flex; flex-direction:column; box-shadow:0 24px 60px rgba(0,0,0,0.35); overflow:hidden;}
-.modal-head{padding:20px 22px 14px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-start;}
-.modal-head h3{margin:0 0 4px; font-size:18px;}
-.modal-head p{margin:0; font-size:12.8px; color:var(--ink-soft);}
-.modal-close{background:transparent; border:none; color:var(--ink-soft); font-size:20px; line-height:1; padding:2px;}
-.modal-search{padding:14px 22px 4px;}
-.modal-search input{width:100%; padding:10px 14px; border-radius:10px; border:1.5px solid var(--line); font-size:14px; background:var(--parchment); color:var(--ink);}
-.modal-list{overflow-y:auto; padding:8px 14px 20px;}
-.kelas-group-label{font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); padding:14px 8px 6px;}
-.student-row{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:transparent; border:none; padding:10px 8px; border-radius:9px; font-size:14.5px; color:var(--ink);}
-.student-row:hover{background:var(--parchment);}
-.student-row .av{width:32px;height:32px;border-radius:50%; background:var(--teal-800); color:var(--gold-200); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex:none;}
-.no-result{padding:20px 8px; text-align:center; font-size:13.5px; color:var(--ink-soft);}
 </style>
 </head>
 <body>
-
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="brand-mark">ﻡ</div>
-      <div class="brand-text">
-        <div class="name">Al-Miftah</div>
-        <div class="sub">Portal Akademik PAI · Kelas VIII</div>
-      </div>
-    </div>
-
-    <nav class="mainnav" id="mainnav">
-      <button class="nav-btn active" data-view="beranda">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
-        Beranda
-      </button>
-      <button class="nav-btn" data-view="materi">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20"/></svg>
-        Materi
-      </button>
-      <button class="nav-btn" data-view="tugas">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
-        Tugas
-      </button>
-      <button class="nav-btn" data-view="evaluasi">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12.5l2 2 4-4.5"/></svg>
-        Evaluasi
-      </button>
-      <button class="nav-btn" data-view="riwayat">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
-        Riwayat Saya
-        <span class="lockdot" id="riwayatLockDot"></span>
-      </button>
-      <button class="nav-btn" data-view="info">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
-        Informasi
-      </button>
-    </nav>
-
-    <div class="sidebar-foot">
-      Al-Miftah · Pendidikan Agama Islam &amp; Budi Pekerti<br>Kelas VIII — Tahun Ajaran 2026/2027
-    </div>
-  </aside>
-
-  <main>
-    <div class="topbar">
-      <div class="greeting">
-        <div class="eyebrow" id="greetTime">Selamat datang</div>
-        <h1 id="greetName">Assalamu'alaikum</h1>
-      </div>
-      <div class="topbar-right">
-        <div class="datebox" id="todayDate"></div>
-        <div id="authArea"></div>
-      </div>
-    </div>
-
-    <!-- BERANDA -->
-    <section class="view active" id="view-beranda">
-      <div class="hero">
-        <p class="arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</p>
-        <p class="translation">"Dan katakanlah: Ya Tuhanku, tambahkanlah kepadaku ilmu pengetahuan." — pengingat harian bagi setiap pencari ilmu di kelas VIII.</p>
-        <p class="source">QS. Thaha: 114</p>
-      </div>
-
-      <div class="auth-teaser" id="authTeaser"></div>
-
-      <div class="stat-grid">
-        <div class="stat-card"><div class="num">6</div><div class="lbl">Bab materi tersedia</div></div>
-        <div class="stat-card"><div class="num">6</div><div class="lbl">Tugas per semester</div></div>
-        <div class="stat-card"><div class="num">6</div><div class="lbl">Evaluasi tersedia</div></div>
-        <div class="stat-card"><div class="num" id="statSiswa">-</div><div class="lbl">Siswa terdaftar</div></div>
-      </div>
-
-      <div class="split-2">
-        <div class="panel">
-          <h3>Ringkasan bab</h3>
-          <div id="babPreview"></div>
-        </div>
-        <div class="panel">
-          <h3>Informasi terbaru</h3>
-          <div id="infoPreview"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MATERI -->
-    <section class="view" id="view-materi">
-      <div class="section-head">
-        <h2>Materi Pembelajaran</h2>
-        <p>Enam bab utama Pendidikan Agama Islam dan Budi Pekerti untuk kelas VIII semester ini. Klik judul bab untuk membuka isi materi.</p>
-      </div>
-      <div id="materiList"></div>
-    </section>
-
-    <!-- TUGAS -->
-    <section class="view" id="view-tugas">
-      <div class="section-head">
-        <h2>Tugas</h2>
-        <p>Daftar penugasan dari setiap bab. Login terlebih dahulu agar status pengerjaanmu tersimpan.</p>
-      </div>
-      <div id="tugasList"></div>
-    </section>
-
-    <!-- EVALUASI -->
-    <section class="view" id="view-evaluasi">
-      <div class="section-head">
-        <h2>Evaluasi</h2>
-        <p>Uji pemahamanmu dengan evaluasi pilihan ganda pada setiap bab. Login terlebih dahulu agar hasilnya tercatat di Riwayat Saya.</p>
-      </div>
-      <div id="quizPicker" class="quiz-grid"></div>
-      <div id="quizRunnerWrap" style="display:none;"></div>
-    </section>
-
-    <!-- RIWAYAT SAYA -->
-    <section class="view" id="view-riwayat">
-      <div id="riwayatContent"></div>
-    </section>
-
-    <!-- INFO -->
-    <section class="view" id="view-info">
-      <div class="section-head">
-        <h2>Informasi Pembelajaran</h2>
-        <p>Pengumuman, agenda, dan jadwal seputar pembelajaran PAI kelas VIII.</p>
-      </div>
-      <div id="infoList"></div>
-    </section>
-
-  </main>
-</div>
-
-<!-- LOGIN MODAL -->
-<div class="modal-overlay" id="loginModal">
-  <div class="modal-box">
-    <div class="modal-head">
-      <div>
-        <h3>Masuk ke Portal</h3>
-        <p>Pilih namamu dari daftar kelas VIII</p>
-      </div>
-      <button class="modal-close" id="closeModal" aria-label="Tutup">✕</button>
-    </div>
-    <div class="modal-search">
-      <input type="text" id="studentSearch" placeholder="Cari nama...">
-    </div>
-    <div class="modal-list" id="studentList"></div>
-  </div>
-</div>
+<div id="root"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script>
-(function(){
-  "use strict";
+/* =====================================================
+   DATA KURIKULUM
+===================================================== */
+const KKM = 75;
+const W = { tugas: 25, kuis: 20, pts: 20, pas: 25, sikap: 10 };
+const SALAT = [["Subuh","04:35"],["Zuhur","11:56"],["Asar","15:09"],["Magrib","17:58"],["Isya","19:07"]];
 
-  /* ============ DATA CONTOH ROSTER (ganti dengan data asli sekolah) ============ */
-  const ROSTER = [
-    {id:"s01", nama:"Ahmad Fajar Ramadhan", kelas:"VIII A"},
-    {id:"s02", nama:"Siti Nur Aisyah", kelas:"VIII A"},
-    {id:"s03", nama:"Muhammad Rizky Pratama", kelas:"VIII A"},
-    {id:"s04", nama:"Nabila Putri Anggraini", kelas:"VIII A"},
-    {id:"s05", nama:"Fajar Hidayatullah", kelas:"VIII B"},
-    {id:"s06", nama:"Dewi Kartika Sari", kelas:"VIII B"},
-    {id:"s07", nama:"Rafi Maulana Ibrahim", kelas:"VIII B"},
-    {id:"s08", nama:"Khoirunnisa Az-Zahra", kelas:"VIII B"},
-    {id:"s09", nama:"Bagus Setiawan", kelas:"VIII C"},
-    {id:"s10", nama:"Alya Salsabila", kelas:"VIII C"}
-  ];
+const NAMES = ["Ahmad Fauzan","Aisyah Putri","Alya Rahmawati","Bagas Prasetyo","Bilqis Azzahra","Cahya Ramadhan","Dafa Alfarizi","Dinda Maharani","Eka Saputra","Farhan Maulana","Fatimah Azzahra","Gilang Permana","Hafizh Ramadhani","Intan Permatasari","Izzat Kamil","Jihan Nabila","Kevin Ardiansyah","Khoirunnisa","Lutfi Hakim","Maulida Safitri","Naufal Rizky","Nayla Zahira","Okta Pratama","Putri Amelia","Qonita Salsabila","Rafi Hidayat","Salsabila Nuraini","Tegar Wicaksono","Ulya Fadhilah","Vino Aditya","Wulan Anggraini","Zidan Kurniawan"];
 
-  const MATERI = [
-    {id:"bab1", bab:"Bab 1", judul:"Meyakini Kitab-Kitab Allah Swt.",
-      ringkasan:"Mengenal makna iman kepada kitab-kitab Allah, empat kitab suci yang wajib diimani, serta kedudukan Al-Qur'an sebagai penyempurna kitab-kitab sebelumnya.",
-      poin:["Iman kepada kitab Allah berarti meyakini bahwa Allah menurunkan wahyu tertulis kepada para rasul-Nya sebagai pedoman hidup manusia.",
-        "Empat kitab yang wajib diimani: Taurat (Nabi Musa a.s.), Zabur (Nabi Dawud a.s.), Injil (Nabi Isa a.s.), dan Al-Qur'an (Nabi Muhammad ﷺ).",
-        "Al-Qur'an berkedudukan sebagai kitab penutup dan penyempurna, berlaku sepanjang zaman, dan dijaga keasliannya oleh Allah.",
-        "Perilaku yang mencerminkan iman kepada kitab Allah: gemar membaca dan mempelajari Al-Qur'an, menjadikannya pedoman hidup sehari-hari."],
-      ayatAr:"إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ",
-      ayatId:"Sesungguhnya Kami-lah yang menurunkan Al-Qur'an, dan sesungguhnya Kami benar-benar memeliharanya. (QS. Al-Hijr: 9)"},
-    {id:"bab2", bab:"Bab 2", judul:"Rendah Hati, Hemat, dan Sederhana",
-      ringkasan:"Memahami makna tawadu' (rendah hati), hidup hemat, dan sederhana sebagai akhlak terpuji yang dicontohkan Rasulullah ﷺ.",
-      poin:["Rendah hati (tawadu') adalah sikap tidak menyombongkan diri meski memiliki kelebihan, serta menghargai orang lain apa adanya.",
-        "Hemat adalah sikap bijak menggunakan harta sesuai kebutuhan, tidak boros namun juga tidak kikir.",
-        "Sederhana berarti hidup wajar, tidak berlebihan dalam penampilan maupun gaya hidup, sesuai kemampuan.",
-        "Ketiga sikap ini saling berkaitan dan menjadi dasar terbentuknya pribadi yang bersyukur dan bijaksana."],
-      ayatAr:"وَالَّذِينَ إِذَا أَنفَقُوا لَمْ يُسْرِفُوا وَلَمْ يَقْتُرُوا وَكَانَ بَيْنَ ذَٰلِكَ قَوَامًا",
-      ayatId:"Dan orang-orang yang apabila membelanjakan harta, mereka tidak berlebihan dan tidak pula kikir, di antara keduanya secara wajar. (QS. Al-Furqan: 67)"},
-    {id:"bab3", bab:"Bab 3", judul:"Islam Membangun Persaudaraan (Ukhuwah)",
-      ringkasan:"Mempelajari konsep ukhuwah dalam Islam: ukhuwah diniyah, wathaniyah, dan basyariyah, serta cara merajut persaudaraan dalam kehidupan bermasyarakat.",
-      poin:["Ukhuwah diniyah: persaudaraan sesama muslim yang terikat oleh akidah dan keimanan.",
-        "Ukhuwah wathaniyah: persaudaraan sebangsa dan setanah air, tanpa memandang perbedaan agama.",
-        "Ukhuwah basyariyah: persaudaraan sesama umat manusia sebagai makhluk ciptaan Allah.",
-        "Cara merajut ukhuwah: saling mengenal (ta'aruf), saling memahami (tafahum), saling tolong-menolong (ta'awun), dan saling menanggung (takaful)."],
-      ayatAr:"إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا بَيْنَ أَخَوَيْكُمْ",
-      ayatId:"Sesungguhnya orang-orang mukmin itu bersaudara, maka damaikanlah antara kedua saudaramu. (QS. Al-Hujurat: 10)"},
-    {id:"bab4", bab:"Bab 4", judul:"Hormat dan Patuh kepada Orang Tua dan Guru",
-      ringkasan:"Memahami kewajiban berbakti (birrul walidain) kepada orang tua dan menghormati guru sebagai bentuk akhlak mulia dalam Islam.",
-      poin:["Birrul walidain adalah kewajiban berbuat baik kepada kedua orang tua, bahkan Al-Qur'an menyandingkan perintah ini setelah perintah menyembah Allah.",
-        "Bentuk hormat kepada orang tua: menaati perintah yang baik, berbicara lemah lembut, mendoakan, dan membantu meringankan beban mereka.",
-        "Guru adalah orang tua kedua yang berjasa menyampaikan ilmu; menghormati guru berarti menaati arahannya dan bersungguh-sungguh dalam belajar.",
-        "Durhaka kepada orang tua (uququl walidain) termasuk dosa besar yang harus dijauhi setiap muslim."],
-      ayatAr:"وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا",
-      ayatId:"Dan Tuhanmu telah memerintahkan agar kamu tidak menyembah selain Dia dan hendaklah berbuat baik kepada kedua orang tua. (QS. Al-Isra: 23)"},
-    {id:"bab5", bab:"Bab 5", judul:"Sujud Syukur, Sujud Sahwi, dan Sujud Tilawah",
-      ringkasan:"Mengenal tiga macam sujud di luar sujud dalam shalat: sujud syukur, sujud sahwi, dan sujud tilawah, beserta tata cara dan sebab-sebabnya.",
-      poin:["Sujud syukur dilakukan ketika mendapat nikmat besar atau terhindar dari musibah, sebagai ungkapan terima kasih kepada Allah.",
-        "Sujud sahwi dilakukan ketika lupa atau ragu dalam jumlah rakaat shalat, dilakukan sebelum atau sesudah salam.",
-        "Sujud tilawah dilakukan ketika membaca atau mendengar ayat sajdah dalam Al-Qur'an.",
-        "Ketiga sujud ini dilakukan satu kali sujud disertai bacaan tertentu, berbeda dengan sujud dalam rangkaian shalat."],
-      ayatAr:"وَإِذَا قُرِئَ عَلَيْهِمُ الْقُرْآنُ لَا يَسْجُدُونَ",
-      ayatId:"Ayat-ayat sajdah dalam Al-Qur'an mengingatkan pentingnya sikap tunduk dan sujud kepada Allah ketika ayat tersebut dibaca. (QS. Al-Insyiqaq: 21, ringkasan makna)"},
-    {id:"bab6", bab:"Bab 6", judul:"Sejarah Peradaban Islam pada Masa Bani Umayyah",
-      ringkasan:"Menelusuri perkembangan wilayah kekuasaan, ilmu pengetahuan, dan kebudayaan Islam pada masa Dinasti Bani Umayyah (661–750 M).",
-      poin:["Bani Umayyah didirikan oleh Muawiyah bin Abi Sufyan dengan pusat pemerintahan di Damaskus, Suriah.",
-        "Masa ini ditandai perluasan wilayah Islam hingga ke Spanyol (Andalusia) di barat dan Asia Tengah di timur.",
-        "Perkembangan ilmu pengetahuan meliputi bidang tata bahasa Arab, arsitektur (Masjid Umayyah Damaskus), dan sistem administrasi negara.",
-        "Tokoh penting: Khalifah Abdul Malik bin Marwan yang menyeragamkan mata uang dan bahasa administrasi menjadi bahasa Arab."],
-      ayatAr:"وَقُل رَّبِّ زِدْنِي عِلْمًا",
-      ayatId:"Semangat menuntut ilmu inilah yang mendorong kemajuan peradaban Islam pada masa Bani Umayyah. (QS. Thaha: 114, ringkasan makna)"}
-  ];
+const BAB = [
+ { id:"b1", t:"Iman kepada Malaikat Allah", m:8,
+   ringkas:["Beriman kepada malaikat berarti meyakini bahwa Allah menciptakan makhluk gaib dari cahaya yang selalu taat dan tidak pernah durhaka. Malaikat tidak makan, tidak minum, dan tidak memiliki hawa nafsu.","Ada sepuluh malaikat yang wajib kita ketahui beserta tugasnya. Keyakinan ini membuat kita merasa selalu diawasi, sehingga terbiasa jujur walaupun sedang sendirian."],
+   poin:["Jibril menyampaikan wahyu kepada para nabi.","Mikail mengatur rezeki, termasuk menurunkan hujan.","Israfil meniup sangkakala pada hari kiamat.","Izrail mencabut nyawa makhluk.","Munkar dan Nakir menanyai manusia di alam kubur.","Raqib mencatat amal baik dan Atid mencatat amal buruk.","Malik menjaga neraka dan Ridwan menjaga surga."],
+   dalil:{ ar:"كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ", src:"QS. Al-Baqarah: 285 (potongan)", id:"Semuanya beriman kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, dan rasul-rasul-Nya." },
+   fakta:"Dalam hadis yang terkenal, Jibril pernah datang kepada Rasulullah ﷺ dalam rupa seorang laki-laki berpakaian putih bersih untuk menanyakan tentang iman, Islam, dan ihsan." },
+ { id:"b2", t:"Salat Sunah dan Sujud", m:9,
+   ringkas:["Salat sunah adalah salat yang dianjurkan tetapi tidak wajib. Mengerjakannya mendapat pahala, dan meninggalkannya tidak berdosa. Salat sunah menyempurnakan kekurangan pada salat fardu kita.","Ada yang dikerjakan sendiri seperti rawatib, duha, dan tahajud, ada pula yang dikerjakan berjamaah seperti salat Id. Selain itu kita mengenal tiga sujud: syukur, tilawah, dan sahwi."],
+   poin:["Rawatib adalah salat sunah yang mengiringi salat fardu, sebelum atau sesudahnya.","Duha dikerjakan setelah matahari naik hingga menjelang Zuhur, paling sedikit dua rakaat.","Tahajud dikerjakan setelah bangun tidur pada malam hari, paling baik di sepertiga malam terakhir.","Salat Id (Idulfitri dan Iduladha) dikerjakan berjamaah dua rakaat.","Sujud syukur dilakukan ketika mendapat nikmat atau terhindar dari bahaya.","Sujud tilawah dilakukan ketika membaca atau mendengar ayat sajdah.","Sujud sahwi dilakukan untuk menutup kekeliruan di dalam salat."],
+   dalil:{ ar:"إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ", src:"QS. Al-Ankabut: 45 (potongan)", id:"Sesungguhnya salat itu mencegah dari perbuatan keji dan mungkar." },
+   fakta:"Salat rawatib sering disebut sebagai penambal kekurangan salat fardu, seperti cadangan yang menyempurnakan yang utama." },
+ { id:"b3", t:"Akhlak Terpuji: Husnuzan dan Tawaduk", m:7,
+   ringkas:["Akhlak terpuji adalah perilaku baik yang lahir dari hati yang bersih. Husnuzan berarti berprasangka baik kepada Allah, kepada diri sendiri, dan kepada sesama.","Tawaduk berarti rendah hati, yaitu mau mengakui kelebihan orang lain dan tidak membanggakan diri. Lawannya adalah takabur atau sombong."],
+   poin:["Husnuzan membuat hubungan pertemanan lebih tenang dan jauh dari curiga.","Contoh husnuzan: tidak langsung menuduh teman yang terlambat membalas pesan.","Tawaduk bukan berarti rendah diri. Kita tetap percaya diri tetapi tidak pamer.","Contoh tawaduk: berterima kasih saat dipuji dan tetap mau belajar dari siapa saja.","Takabur adalah menolak kebenaran dan meremehkan orang lain."],
+   dalil:{ ar:"وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ", src:"QS. Al-Qalam: 4", id:"Dan sesungguhnya engkau (Muhammad) benar-benar berbudi pekerti yang agung." },
+   fakta:"Akhlak Rasulullah ﷺ menjadi teladan utama. Sifat rendah hati beliau tampak dari kebiasaan membantu pekerjaan keluarga di rumah." },
+ { id:"b4", t:"Puasa Wajib dan Sunah", m:8,
+   ringkas:["Puasa adalah menahan diri dari hal-hal yang membatalkan, mulai terbit fajar sampai terbenam matahari, disertai niat. Puasa Ramadan hukumnya wajib bagi muslim yang balig, berakal, dan mampu.","Selain puasa wajib, ada puasa sunah yang bisa menjadi kebiasaan baik, dan ada hari-hari yang diharamkan untuk berpuasa."],
+   poin:["Yang membatalkan puasa: makan dan minum dengan sengaja, muntah dengan sengaja, haid dan nifas.","Sunah puasa: sahur, menyegerakan buka, dan memperbanyak sedekah.","Puasa sunah: Senin Kamis, Arafah, Asyura, dan Ayyamul Bidh.","Haram berpuasa pada Idulfitri dan Iduladha.","Hikmah puasa: melatih kesabaran, empati kepada yang kekurangan, dan pengendalian diri."],
+   dalil:{ ar:"يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ", src:"QS. Al-Baqarah: 183", id:"Wahai orang-orang yang beriman! Diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa." },
+   fakta:"Puasa yang paling sulit sering bukan menahan lapar, tetapi menahan lisan dari berkata kasar." },
+ { id:"b5", t:"Sejarah Peradaban Bani Umayyah", m:10,
+   ringkas:["Dinasti Bani Umayyah berdiri tahun 661 M dengan Muawiyah bin Abu Sufyan sebagai khalifah pertama. Pusat pemerintahannya di Damaskus, Syam.","Pada masa ini wilayah Islam meluas hingga Afrika Utara dan Andalusia (Spanyol). Dinasti ini berakhir tahun 750 M dan digantikan oleh Bani Abbasiyah."],
+   poin:["Tahun 711 M pasukan Tariq bin Ziyad menyeberang ke Andalusia.","Bahasa Arab dijadikan bahasa resmi administrasi negara.","Dibangun Masjid Kubah Batu di Yerusalem dan Masjid Umawi di Damaskus.","Umar bin Abdul Aziz (memerintah 717 sampai 720 M) dikenal adil dan sederhana.","Pergantian dinasti menunjukkan bahwa kejayaan dan kemunduran datang silih berganti."],
+   dalil:{ ar:"وَتِلْكَ الْأَيَّامُ نُدَاوِلُهَا بَيْنَ النَّاسِ", src:"QS. Ali Imran: 140 (potongan)", id:"Dan masa (kejayaan dan kehancuran) itu Kami pergilirkan di antara manusia." },
+   fakta:"Masjid Umawi di Damaskus masih berdiri sampai sekarang dan menjadi salah satu masjid tertua di dunia." },
+ { id:"b6", t:"Iman kepada Kitab-kitab Allah", m:8,
+   ringkas:["Beriman kepada kitab berarti meyakini bahwa Allah menurunkan wahyu melalui para rasul sebagai petunjuk hidup. Ada empat kitab yang wajib kita imani, ditambah suhuf Nabi Ibrahim.","Al-Qur’an adalah kitab terakhir, membenarkan kitab sebelumnya, dan dijaga keasliannya oleh Allah sampai akhir zaman."],
+   poin:["Taurat diturunkan kepada Nabi Musa.","Zabur diturunkan kepada Nabi Daud.","Injil diturunkan kepada Nabi Isa.","Al-Qur’an diturunkan kepada Nabi Muhammad ﷺ secara berangsur-angsur selama sekitar 23 tahun.","Wahyu pertama adalah Surah Al-Alaq ayat 1 sampai 5."],
+   dalil:{ ar:"إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ", src:"QS. Al-Hijr: 9", id:"Sesungguhnya Kamilah yang menurunkan Al-Qur’an, dan pasti Kami (pula) yang memeliharanya." },
+   fakta:"Banyak penghafal Al-Qur’an di dunia adalah anak-anak seusia kalian. Menghafal sedikit demi sedikit setiap hari jauh lebih ringan." }
+];
 
-  const TUGAS = [
-    {id:"t1", materiId:"bab1", judul:"Menghafal nama kitab dan rasul penerima", tenggat:"Pekan ke-2", deskripsi:"Hafalkan empat kitab Allah beserta nabi yang menerimanya, lalu setorkan hafalan kepada guru."},
-    {id:"t2", materiId:"bab2", judul:"Jurnal harian sikap sederhana", deskripsi:"Tulis satu contoh penerapan hidup hemat dan sederhana yang kamu lakukan setiap hari selama satu pekan.", tenggat:"Pekan ke-3"},
-    {id:"t3", materiId:"bab3", judul:"Poster ukhuwah islamiyah", deskripsi:"Buat poster sederhana yang menggambarkan salah satu bentuk ukhuwah (diniyah/wathaniyah/basyariyah) beserta contohnya.", tenggat:"Pekan ke-4"},
-    {id:"t4", materiId:"bab4", judul:"Menulis surat untuk orang tua", deskripsi:"Tulis surat singkat berisi ungkapan terima kasih dan doa untuk kedua orang tua.", tenggat:"Pekan ke-5"},
-    {id:"t5", materiId:"bab5", judul:"Praktik tata cara sujud", deskripsi:"Praktikkan tata cara sujud syukur, sujud sahwi, dan sujud tilawah di depan kelas secara bergantian.", tenggat:"Pekan ke-6"},
-    {id:"t6", materiId:"bab6", judul:"Rangkuman peta wilayah Bani Umayyah", deskripsi:"Gambar peta sederhana wilayah kekuasaan Bani Umayyah dan tuliskan tiga capaian pentingnya.", tenggat:"Pekan ke-7"}
-  ];
+const QUIZ = {
+ b1:[
+  {q:"Malaikat yang bertugas menyampaikan wahyu kepada para nabi adalah…",o:["Mikail","Jibril","Israfil","Izrail"],a:1},
+  {q:"Malaikat yang meniup sangkakala pada hari kiamat adalah…",o:["Ridwan","Malik","Israfil","Atid"],a:2},
+  {q:"Tugas malaikat Raqib dan Atid adalah…",o:["Mencatat amal baik dan amal buruk","Menjaga pintu surga","Menurunkan hujan","Menanyai manusia di kubur"],a:0},
+  {q:"Malaikat diciptakan Allah dari…",o:["Tanah","Api","Air","Cahaya"],a:3}],
+ b2:[
+  {q:"Salat sunah yang mengiringi salat fardu disebut salat…",o:["Rawatib","Tahajud","Duha","Istikharah"],a:0},
+  {q:"Salat sunah yang dikerjakan berjamaah adalah…",o:["Duha","Tahajud","Idulfitri","Rawatib Subuh"],a:2},
+  {q:"Waktu salat Duha adalah…",o:["Setelah Magrib","Setelah matahari naik sampai menjelang Zuhur","Sebelum terbit fajar","Setelah Isya"],a:1},
+  {q:"Sujud syukur dilakukan ketika…",o:["Lupa jumlah rakaat","Membaca ayat sajdah","Mendapat nikmat atau terhindar dari bahaya","Sebelum berwudu"],a:2}],
+ b3:[
+  {q:"Husnuzan artinya…",o:["Berprasangka baik","Berbicara sopan","Berhemat","Bersikap ragu"],a:0},
+  {q:"Tawaduk artinya…",o:["Percaya diri berlebihan","Rendah hati","Suka memberi nasihat","Pandai berbicara"],a:1},
+  {q:"Contoh sikap tawaduk adalah…",o:["Memamerkan nilai ke semua teman","Menolak belajar dari adik kelas","Tetap ramah dan tidak pamer prestasi","Merasa paling benar"],a:2},
+  {q:"Lawan dari sifat tawaduk adalah…",o:["Qanaah","Takabur","Sabar","Ikhlas"],a:1}],
+ b4:[
+  {q:"Puasa wajib dilaksanakan pada bulan…",o:["Syaban","Rajab","Ramadan","Zulhijah"],a:2},
+  {q:"Berikut yang membatalkan puasa adalah…",o:["Berwudu","Makan dan minum dengan sengaja","Menyikat gigi","Tidur siang"],a:1},
+  {q:"Waktu berpuasa dimulai dari…",o:["Terbit fajar sampai terbenam matahari","Zuhur sampai Isya","Terbit matahari sampai Zuhur","Subuh sampai Asar"],a:0},
+  {q:"Berpuasa diharamkan pada hari…",o:["Senin","Arafah","Kamis","Idulfitri"],a:3}],
+ b5:[
+  {q:"Pendiri Dinasti Bani Umayyah adalah…",o:["Abu Bakar","Muawiyah bin Abu Sufyan","Harun Ar-Rasyid","Ali bin Abi Thalib"],a:1},
+  {q:"Pusat pemerintahan Bani Umayyah berada di…",o:["Baghdad","Madinah","Damaskus","Kairo"],a:2},
+  {q:"Khalifah Umayyah yang terkenal adil dan sederhana adalah…",o:["Umar bin Abdul Aziz","Yazid bin Muawiyah","Marwan II","Abdul Malik"],a:0},
+  {q:"Dinasti yang menggantikan Bani Umayyah adalah…",o:["Fatimiyah","Ayyubiyah","Abbasiyah","Utsmaniyah"],a:2}],
+ b6:[
+  {q:"Kitab yang diturunkan kepada Nabi Musa adalah…",o:["Injil","Taurat","Zabur","Al-Qur’an"],a:1},
+  {q:"Kitab Zabur diturunkan kepada Nabi…",o:["Isa","Ibrahim","Sulaiman","Daud"],a:3},
+  {q:"Al-Qur’an diturunkan kepada Nabi Muhammad ﷺ secara…",o:["Sekaligus dalam satu malam","Berangsur-angsur sekitar 23 tahun","Dalam satu bulan","Melalui mimpi saja"],a:1},
+  {q:"Wahyu pertama yang turun adalah…",o:["Surah Al-Fatihah","Surah Al-Ikhlas","Surah Al-Alaq ayat 1 sampai 5","Surah An-Nas"],a:2}]
+};
 
-  const QUIZZES = [
-    {id:"q1", materiId:"bab1", judul:"Evaluasi Bab 1", soal:[
-      {p:"Kitab yang diturunkan kepada Nabi Musa a.s. adalah...", opsi:["Zabur","Taurat","Injil","Al-Qur'an"], j:1},
-      {p:"Kitab suci yang berlaku sepanjang zaman dan menjadi penyempurna kitab sebelumnya adalah...", opsi:["Taurat","Zabur","Injil","Al-Qur'an"], j:3},
-      {p:"Nabi Dawud a.s. menerima kitab...", opsi:["Zabur","Taurat","Injil","Suhuf"], j:0},
-      {p:"Salah satu perilaku yang mencerminkan iman kepada kitab Allah adalah...", opsi:["Mengabaikan bacaan Al-Qur'an","Rajin membaca dan mengamalkan Al-Qur'an","Hanya membaca saat ujian","Menganggap kitab lain lebih utama"], j:1},
-      {p:"Allah menjamin keaslian Al-Qur'an dijelaskan dalam surah...", opsi:["QS. Al-Baqarah: 1","QS. Al-Hijr: 9","QS. An-Nisa: 1","QS. Al-Fatihah: 1"], j:1}
-    ]},
-    {id:"q2", materiId:"bab2", judul:"Evaluasi Bab 2", soal:[
-      {p:"Sikap tidak menyombongkan diri disebut...", opsi:["Tawadu'","Takabur","Riya'","Hasad"], j:0},
-      {p:"Hidup hemat berarti...", opsi:["Tidak pernah membelanjakan harta","Bijak menggunakan harta sesuai kebutuhan","Menumpuk harta sebanyak mungkin","Meminjam uang terus-menerus"], j:1},
-      {p:"Lawan dari sikap sederhana adalah...", opsi:["Qanaah","Tawadu'","Berlebih-lebihan (israf)","Sabar"], j:2},
-      {p:"QS. Al-Furqan ayat 67 menjelaskan tentang...", opsi:["Sikap sombong","Sikap membelanjakan harta secara wajar","Sikap dengki","Sikap malas"], j:1},
-      {p:"Berikut yang termasuk ciri orang rendah hati adalah...", opsi:["Meremehkan orang lain","Suka dipuji","Menghargai orang lain apa adanya","Merasa paling benar"], j:2}
-    ]},
-    {id:"q3", materiId:"bab3", judul:"Evaluasi Bab 3", soal:[
-      {p:"Persaudaraan sesama muslim disebut...", opsi:["Ukhuwah wathaniyah","Ukhuwah diniyah","Ukhuwah basyariyah","Ukhuwah qarabah"], j:1},
-      {p:"Persaudaraan sebangsa dan setanah air disebut...", opsi:["Ukhuwah diniyah","Ukhuwah basyariyah","Ukhuwah wathaniyah","Ukhuwah islamiyah"], j:2},
-      {p:"QS. Al-Hujurat ayat 10 menegaskan bahwa orang mukmin itu...", opsi:["Bersaing","Bersaudara","Bermusuhan","Terpisah"], j:1},
-      {p:"Sikap saling tolong-menolong dalam ukhuwah disebut...", opsi:["Ta'aruf","Tafahum","Ta'awun","Tanafus"], j:2},
-      {p:"Persaudaraan sesama manusia tanpa memandang agama disebut...", opsi:["Ukhuwah basyariyah","Ukhuwah diniyah","Ukhuwah wathaniyah","Ukhuwah qarabah"], j:0}
-    ]},
-    {id:"q4", materiId:"bab4", judul:"Evaluasi Bab 4", soal:[
-      {p:"Istilah berbakti kepada kedua orang tua disebut...", opsi:["Birrul walidain","Uququl walidain","Silaturahmi","Tawakal"], j:0},
-      {p:"QS. Al-Isra ayat 23 memerintahkan agar manusia menyembah Allah dan...", opsi:["Mencari harta","Berbuat baik kepada orang tua","Menuntut ilmu","Berdagang jujur"], j:1},
-      {p:"Durhaka kepada orang tua disebut...", opsi:["Birrul walidain","Uququl walidain","Ihsan","Tawadu'"], j:1},
-      {p:"Guru disebut sebagai orang tua kedua karena...", opsi:["Memberi uang jajan","Menyampaikan ilmu kepada murid","Menemani bermain","Menjaga rumah"], j:1},
-      {p:"Salah satu bentuk hormat kepada orang tua adalah...", opsi:["Berkata kasar","Mengabaikan nasihat","Berbicara lemah lembut dan mendoakan","Membantah setiap saat"], j:2}
-    ]},
-    {id:"q5", materiId:"bab5", judul:"Evaluasi Bab 5", soal:[
-      {p:"Sujud yang dilakukan karena mendapat nikmat besar disebut...", opsi:["Sujud sahwi","Sujud syukur","Sujud tilawah","Sujud rukun"], j:1},
-      {p:"Sujud yang dilakukan karena lupa jumlah rakaat shalat disebut...", opsi:["Sujud syukur","Sujud tilawah","Sujud sahwi","Sujud wajib"], j:2},
-      {p:"Sujud tilawah dilakukan ketika...", opsi:["Mendapat hadiah","Membaca atau mendengar ayat sajdah","Selesai shalat","Lupa wudhu"], j:1},
-      {p:"Sujud syukur, sahwi, dan tilawah dilakukan sebanyak...", opsi:["Dua kali sujud","Tiga kali sujud","Satu kali sujud","Empat kali sujud"], j:2},
-      {p:"Sujud sahwi dapat dilakukan...", opsi:["Sebelum atau sesudah salam","Hanya sebelum salam","Hanya sesudah salam","Di luar waktu shalat"], j:0}
-    ]},
-    {id:"q6", materiId:"bab6", judul:"Evaluasi Bab 6", soal:[
-      {p:"Pendiri Dinasti Bani Umayyah adalah...", opsi:["Umar bin Khattab","Muawiyah bin Abi Sufyan","Harun Ar-Rasyid","Abdul Malik bin Marwan"], j:1},
-      {p:"Pusat pemerintahan Bani Umayyah berada di kota...", opsi:["Baghdad","Kairo","Damaskus","Madinah"], j:2},
-      {p:"Pada masa Bani Umayyah, wilayah Islam meluas hingga ke...", opsi:["Amerika","Andalusia (Spanyol)","Australia","Antartika"], j:1},
-      {p:"Khalifah yang menyeragamkan mata uang dan bahasa administrasi adalah...", opsi:["Muawiyah bin Abi Sufyan","Abdul Malik bin Marwan","Yazid bin Muawiyah","Marwan bin Hakam"], j:1},
-      {p:"Bani Umayyah berkuasa kurang lebih pada tahun...", opsi:["661–750 M","750–850 M","900–1000 M","500–600 M"], j:0}
-    ]}
-  ];
+const TASKS = [
+ { id:"t1", bab:"b1", t:"Peta konsep sepuluh malaikat", off:-8, d:"Buat peta konsep berisi nama malaikat, tugasnya, dan satu sikap yang bisa kamu teladani dari masing-masing. Tulis ringkasannya di sini atau tempel tautan file." },
+ { id:"t2", bab:"b1", t:"Refleksi: merasa diawasi Raqib dan Atid", off:-3, d:"Tulis lima kalimat tentang satu kejadian minggu ini ketika kamu tetap jujur karena sadar selalu diawasi Allah." },
+ { id:"t3", bab:"b2", t:"Tabel jenis salat sunah", off:2, d:"Susun tabel berisi nama salat sunah, waktu pelaksanaan, jumlah rakaat, dan apakah dikerjakan sendiri atau berjamaah." },
+ { id:"t4", bab:"b2", t:"Jurnal salat rawatib selama seminggu", off:6, d:"Catat salat rawatib yang kamu kerjakan selama tujuh hari beserta perasaanmu. Dinilai dari kelengkapan dan kejujuran catatan." },
+ { id:"t5", bab:"b3", t:"Poster akhlak terpuji", off:13, d:"Rancang poster tentang husnuzan atau tawaduk. Kumpulkan deskripsi ide, pesan utama, dan tautan posternya." }
+];
 
-  const INFO = [
-    {tgl:"18", bln:"Sep", judul:"Jadwal Evaluasi Tengah Semester", isi:"Evaluasi seluruh bab akan dibuka mulai pekan depan. Selesaikan materi sebelum mengerjakan evaluasi agar hasil maksimal."},
-    {tgl:"22", bln:"Sep", judul:"Pengumpulan Tugas Rangkuman", isi:"Seluruh tugas ditulis rapi dan dikumpulkan sesuai tenggat pada halaman Tugas. Keterlambatan akan memengaruhi nilai keaktifan."},
-    {tgl:"25", bln:"Sep", judul:"Praktik Sujud di Kelas", isi:"Praktik sujud syukur, sujud sahwi, dan sujud tilawah dilaksanakan bergiliran per kelompok pada jam pelajaran PAI."},
-    {tgl:"30", bln:"Sep", judul:"Tips Belajar Efektif", isi:"Bagi waktu belajar 20 menit per bab, ulangi poin penting dengan kata-katamu sendiri, lalu uji pemahaman lewat menu Evaluasi."}
-  ];
+const AYAT = BAB.map(b => b.dalil);
 
-  /* ============ AUTH STATE (per perangkat) ============ */
-  const LS_CURRENT = "pai_current_student_id";
-  function initials(name){ return name.trim().split(/\s+/).slice(0,2).map(w=>w[0]).join("").toUpperCase(); }
-  function getProgressKey(sid){ return "pai_progress_" + sid; }
-  function loadProgress(sid){
-    try{ const v = localStorage.getItem(getProgressKey(sid)); return v ? JSON.parse(v) : {materiDone:{}, tugasDone:{}, nilai:{}}; }
-    catch(e){ return {materiDone:{}, tugasDone:{}, nilai:{}}; }
-  }
-  function saveProgress(sid, data){
-    try{ localStorage.setItem(getProgressKey(sid), JSON.stringify(data)); }catch(e){}
-  }
-
-  let currentStudent = null;
-  let progress = {materiDone:{}, tugasDone:{}, nilai:{}};
-
-  function restoreSession(){
-    let sid = null;
-    try{ sid = localStorage.getItem(LS_CURRENT); }catch(e){}
-    const found = ROSTER.find(s=>s.id===sid);
-    if(found){ currentStudent = found; progress = loadProgress(found.id); }
-  }
-  function loginAs(student){
-    currentStudent = student;
-    progress = loadProgress(student.id);
-    try{ localStorage.setItem(LS_CURRENT, student.id); }catch(e){}
-    renderAll();
-  }
-  function logout(){
-    currentStudent = null;
-    progress = {materiDone:{}, tugasDone:{}, nilai:{}};
-    try{ localStorage.removeItem(LS_CURRENT); }catch(e){}
-    switchView("beranda");
-    renderAll();
-  }
-  function persist(){ if(currentStudent) saveProgress(currentStudent.id, progress); }
-
-  /* ============ LOGIN MODAL ============ */
-  const loginModal = document.getElementById("loginModal");
-  const studentList = document.getElementById("studentList");
-  const studentSearch = document.getElementById("studentSearch");
-
-  function openLogin(){
-    studentSearch.value = "";
-    renderStudentList("");
-    loginModal.classList.add("open");
-    setTimeout(()=>studentSearch.focus(), 50);
-  }
-  function closeLogin(){ loginModal.classList.remove("open"); }
-  document.getElementById("closeModal").addEventListener("click", closeLogin);
-  loginModal.addEventListener("click", (e)=>{ if(e.target === loginModal) closeLogin(); });
-  studentSearch.addEventListener("input", ()=> renderStudentList(studentSearch.value));
-
-  function renderStudentList(query){
-    const q = query.trim().toLowerCase();
-    const filtered = ROSTER.filter(s=> s.nama.toLowerCase().includes(q));
-    if(filtered.length === 0){
-      studentList.innerHTML = `<div class="no-result">Nama tidak ditemukan. Hubungi guru jika namamu belum terdaftar.</div>`;
-      return;
-    }
-    const groups = {};
-    filtered.forEach(s=>{ (groups[s.kelas] = groups[s.kelas] || []).push(s); });
-    let html = "";
-    Object.keys(groups).sort().forEach(kelas=>{
-      html += `<div class="kelas-group-label">Kelas ${kelas}</div>`;
-      groups[kelas].forEach(s=>{
-        html += `<button class="student-row" data-id="${s.id}"><span class="av">${initials(s.nama)}</span><span>${s.nama}</span></button>`;
-      });
-    });
-    studentList.innerHTML = html;
-    studentList.querySelectorAll(".student-row").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const s = ROSTER.find(r=>r.id===btn.dataset.id);
-        if(s){ loginAs(s); closeLogin(); }
-      });
-    });
-  }
-
-  /* ============ NAV ============ */
-  const views = document.querySelectorAll(".view");
-  const navBtns = document.querySelectorAll(".nav-btn");
-  function switchView(target){
-    navBtns.forEach(b=>b.classList.toggle("active", b.dataset.view===target));
-    views.forEach(v=> v.classList.toggle("active", v.id === "view-"+target));
-    window.scrollTo({top:0, behavior:"smooth"});
-  }
-  navBtns.forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const target = btn.dataset.view;
-      if(target === "riwayat" && !currentStudent){ openLogin(); return; }
-      switchView(target);
-      if(target === "riwayat") renderRiwayat();
+/* =====================================================
+   PENYIMPANAN (localStorage, aman jika gagal)
+===================================================== */
+const KEY = "pai8a_portal_v1";
+let DB = null;
+function h(n,k){ const x = Math.sin(n*127.1 + k*311.7) * 43758.5453; return x - Math.floor(x); }
+function seed(){
+  const students = NAMES.map((nama,i)=>({ no:i+1, nama, pts:Math.round(68+h(i+1,1)*30), pas:null, sikap:Math.round(80+h(i+1,2)*18), hadir:Math.round(88+h(i+1,3)*12) }));
+  const base = Date.now();
+  const subs = {};
+  students.forEach(s=>{
+    ["t1","t2"].forEach((t,j)=>{
+      if (h(s.no,10+j) > 0.08) subs[t+"_"+s.no] = { text:"Dikumpulkan.", at: base - (10-j*3)*864e5, score: Math.round(72+h(s.no,20+j)*27), fb:"" };
     });
   });
+  return { base, students, subs, quiz:{}, done:{}, ann:[
+    { id:"a1", t:"Kuis Bab 1 sudah dibuka", b:"Kerjakan di menu Evaluasi. Boleh diulang, nilai tertinggi yang dipakai.", at: base - 864e5 },
+    { id:"a2", t:"Bawa Al-Qur’an dan buku catatan", b:"Pertemuan berikutnya kita praktik sujud syukur dan sujud tilawah.", at: base },
+    { id:"a3", t:"Penilaian Tengah Semester", b:"Materi PTS PAI mencakup Bab 1 sampai Bab 3. Pelajari ringkasan dan kerjakan kuisnya.", at: base - 5*864e5 }
+  ]};
+}
+function load(){ try{ const r = localStorage.getItem(KEY); if(r) return JSON.parse(r); }catch(e){} return null; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){} }
+DB = load() || seed();
+function sessGet(){ try{ const v = localStorage.getItem(KEY+"_s"); return v===null?null:+v; }catch(e){ return null; } }
+function sessSet(v){ try{ if(v===null) localStorage.removeItem(KEY+"_s"); else localStorage.setItem(KEY+"_s", String(v)); }catch(e){} }
 
-  /* ============ TOPBAR AUTH AREA ============ */
-  function renderAuthArea(){
-    const el = document.getElementById("authArea");
-    if(currentStudent){
-      el.innerHTML = `
-        <div class="auth-chip">
-          <div class="av">${initials(currentStudent.nama)}</div>
-          <div class="who"><b>${currentStudent.nama}</b>Kelas ${currentStudent.kelas}</div>
-          <button id="logoutBtn">Keluar</button>
-        </div>`;
-      document.getElementById("logoutBtn").addEventListener("click", logout);
-    } else {
-      el.innerHTML = `
-        <button class="login-btn" id="loginTopBtn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
-          Masuk
-        </button>`;
-      document.getElementById("loginTopBtn").addEventListener("click", openLogin);
+/* =====================================================
+   UTIL
+===================================================== */
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const avg = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
+const r1 = v => v==null ? "–" : (Math.round(v*10)/10).toString().replace(".",",");
+const fmtDate = (t,opt={weekday:"short",day:"numeric",month:"short"}) => new Date(t).toLocaleDateString("id-ID",opt);
+const dueAt = t => { const d = new Date(DB.base + t.off*864e5); d.setHours(23,59,0,0); return d.getTime(); };
+const norm = s => String(s||"").toLowerCase().replace(/[^a-z\s]/g," ").replace(/\s+/g," ").trim();
+const IC = {
+  home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+  book:'<path d="M4 4h6a3 3 0 013 3v13a2 2 0 00-2-2H4z"/><path d="M20 4h-6a3 3 0 00-3 3v13a2 2 0 012-2h7z"/>',
+  task:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4v2h6V4M9 13l2 2 4-4"/>',
+  quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.7a2.6 2.6 0 015.1.6c0 1.8-2.6 2.1-2.6 3.7M12 17.4h.01"/>',
+  chart:'<path d="M4 20V11M10 20V4M16 20v-6M22 20H2"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/>',
+  out:'<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h11"/>',
+  back:'<path d="M15 6l-6 6 6 6"/>'
+};
+const ic = (n,s=20)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
+function starPts(cx,cy,R){ const r=R*0.7654, p=[]; for(let k=0;k<16;k++){ const a=(-90+k*22.5)*Math.PI/180, rr=k%2?r:R; p.push([cx+rr*Math.cos(a),cy+rr*Math.sin(a)]); } return p; }
+function starPath(cx,cy,R){ return "M"+starPts(cx,cy,R).map(p=>p[0].toFixed(1)+" "+p[1].toFixed(1)).join("L")+"Z"; }
+function starRing(pct, track, color){
+  const d = starPath(110,110,98);
+  return `<svg viewBox="0 0 220 220" aria-hidden="true"><path d="${d}" fill="none" stroke="${track}" stroke-width="9" stroke-linejoin="round"/><path class="prog-arc" data-pct="${pct}" d="${d}" pathLength="100" fill="none" stroke="${color}" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="100" stroke-dashoffset="100"/></svg>`;
+}
+function animateArcs(){ requestAnimationFrame(()=>requestAnimationFrame(()=>{ document.querySelectorAll(".prog-arc").forEach(el=>{ el.style.strokeDashoffset = 100 - Math.max(0,Math.min(100,+el.dataset.pct)); }); })); }
+let toastT;
+function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),2600); }
+const lattice = `<svg class="lattice" width="100%" height="100%" aria-hidden="true"><defs><pattern id="pt" width="64" height="64" patternUnits="userSpaceOnUse"><path d="${starPath(32,32,24)}" fill="none" stroke="#fff" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#pt)"/></svg>`;
+
+/* =====================================================
+   PERHITUNGAN NILAI
+===================================================== */
+const stu = no => DB.students.find(s=>s.no===no);
+const sub = (t,no) => DB.subs[t+"_"+no];
+function tugasAvg(no){ return avg(TASKS.map(t=>sub(t.id,no)).filter(x=>x&&x.score!=null).map(x=>x.score)); }
+function kuisAvg(no){ const q = DB.quiz[no]||{}; return avg(Object.values(q).map(x=>x.best)); }
+function comps(no){ const s=stu(no); return { tugas:tugasAvg(no), kuis:kuisAvg(no), pts:s.pts, pas:s.pas, sikap:s.sikap }; }
+function finalScore(no){
+  const c = comps(no); let sum=0, w=0;
+  Object.keys(W).forEach(k=>{ if(c[k]!=null){ sum+=c[k]*W[k]; w+=W[k]; } });
+  return w? sum/w : null;
+}
+function predikat(v){ if(v==null) return {k:"–",t:"Belum ada nilai",c:""}; if(v>=90) return {k:"A",t:"Sangat baik",c:"ok"}; if(v>=80) return {k:"B",t:"Baik",c:"ok"}; if(v>=KKM) return {k:"C",t:"Cukup, sudah tuntas",c:"warn"}; return {k:"D",t:"Perlu remedial",c:"bad"}; }
+function classAvg(key){ return avg(DB.students.map(s=> key==="final"?finalScore(s.no):comps(s.no)[key]).filter(v=>v!=null)); }
+function progress(no){
+  const done=(DB.done[no]||[]).length, sb=TASKS.filter(t=>sub(t.id,no)).length, qz=Object.keys(DB.quiz[no]||{}).length;
+  return Math.round((done+sb+qz)/(BAB.length+TASKS.length+BAB.length)*100);
+}
+function taskStatus(t,no){
+  const s=sub(t.id,no);
+  if(!s) return dueAt(t)<Date.now() ? {k:"late",l:"Belum dikumpulkan",c:"bad"} : {k:"todo",l:"Belum dikerjakan",c:"warn"};
+  if(s.score!=null) return {k:"graded",l:"Dinilai "+s.score,c:"ok"};
+  return {k:"sent",l:"Menunggu penilaian",c:"info"};
+}
+function nextSalat(){
+  const now=new Date(), m=now.getHours()*60+now.getMinutes();
+  for(const [n,t] of SALAT){ const [hh,mm]=t.split(":").map(Number); const x=hh*60+mm; if(x>m) return {n,t,d:x-m}; }
+  const [hh,mm]=SALAT[0][1].split(":").map(Number); return {n:SALAT[0][0],t:SALAT[0][1],d:1440-m+hh*60+mm};
+}
+function salatText(){ const s=nextSalat(); const j=Math.floor(s.d/60), mnt=s.d%60; return `${s.n} ${s.t}, ${j>0?j+" jam ":""}${mnt} menit lagi`; }
+
+/* =====================================================
+   STATE & ROUTER
+===================================================== */
+let ME=null, view="beranda", subv=null, qz=null, tfilter="semua", tSel=null;
+const NAV_S=[["beranda","Beranda","home"],["materi","Materi","book"],["tugas","Tugas","task"],["evaluasi","Evaluasi","quiz"],["nilai","Nilai","chart"],["info","Info","info"]];
+const NAV_T=[["t_ring","Ringkasan","home"],["t_rekap","Rekap nilai","chart"],["t_tugas","Tugas masuk","task"],["t_info","Pengumuman","info"]];
+const TITLES={beranda:"Beranda",materi:"Materi",tugas:"Tugas",evaluasi:"Evaluasi",nilai:"Nilai",info:"Informasi kelas",t_ring:"Ringkasan kelas",t_rekap:"Rekap nilai",t_tugas:"Tugas masuk",t_info:"Pengumuman"};
+
+function boot(){
+  const s = sessGet();
+  if(s!==null){ if(s===0) ME={teacher:true,nama:"Guru PAI"}; else { const st=stu(s); if(st) ME=st; } }
+  if(ME) view = ME.teacher ? "t_ring" : "beranda";
+  render();
+}
+function render(){ ME ? renderApp() : renderLogin(); }
+
+/* ---------- Login ---------- */
+function renderLogin(){
+  const roster = DB.students.map(s=>`<button type="button" data-act="fill" data-no="${s.no}"><b>${s.no}</b><span>${esc(s.nama)}</span></button>`).join("");
+  $("#root").innerHTML = `
+  <main class="login">
+    <section class="art" aria-hidden="false">
+      ${lattice}
+      <div class="spin">
+        <svg class="s1" viewBox="0 0 220 220"><path d="${starPath(110,110,104)}" fill="none" stroke="#F2B233" stroke-width="1.6"/></svg>
+        <svg class="s2" viewBox="0 0 220 220"><path d="${starPath(110,110,80)}" fill="none" stroke="#7DE0DA" stroke-width="1.2"/><path d="${starPath(110,110,56)}" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1"/></svg>
+      </div>
+      <div class="big">8A</div>
+      <div class="cap"><h1>Belajar PAI, satu bintang setiap langkah.</h1><p>Materi, tugas, kuis, dan nilai Pendidikan Agama Islam kelas 8A ada di satu tempat.</p></div>
+    </section>
+    <section class="panel">
+      <h2>Masuk ke Bintang 8A</h2>
+      <p class="lead">Gunakan namamu dan nomor absen di daftar kelas.</p>
+      <form id="lf" novalidate>
+        <div class="field"><label for="nm">Nama</label><input id="nm" name="nm" type="text" autocomplete="off" placeholder="Contoh: Aisyah Putri"><small>Nama lengkap atau nama depan saja.</small></div>
+        <div class="field"><label for="ab">Nomor absen</label><input id="ab" name="ab" type="number" inputmode="numeric" min="0" max="32" placeholder="Contoh: 2"></div>
+        <div class="err" id="err" role="alert"></div>
+        <button class="btn" type="submit" style="width:100%">Masuk</button>
+      </form>
+      <details class="roster"><summary>Lupa nomor absen? Lihat daftar kelas</summary><div class="grid">${roster}</div></details>
+      <p class="hint">Guru masuk dengan nama “Guru PAI” dan nomor absen 0. Data pada versi contoh ini tersimpan di browser perangkat ini.</p>
+    </section>
+  </main>`;
+  $("#lf").addEventListener("submit", e=>{
+    e.preventDefault();
+    const n = norm($("#nm").value), no = $("#ab").value.trim();
+    const err = $("#err");
+    if(n.length<3){ err.textContent="Isi namamu dulu, minimal 3 huruf."; $("#nm").focus(); return; }
+    if(no===""){ err.textContent="Isi nomor absenmu."; $("#ab").focus(); return; }
+    const num = +no;
+    if(num===0){
+      if(n.includes("guru")){ ME={teacher:true,nama:"Guru PAI"}; sessSet(0); view="t_ring"; render(); return; }
+      err.textContent="Nomor absen 0 khusus untuk guru. Gunakan nama “Guru PAI”."; return;
     }
-    document.getElementById("riwayatLockDot").style.display = currentStudent ? "none" : "inline-block";
-  }
+    const s = stu(num);
+    if(!s){ err.textContent="Nomor absen "+num+" tidak ada. Nomor absen kelas 8A adalah 1 sampai "+DB.students.length+"."; return; }
+    if(!norm(s.nama).includes(n)){ err.textContent="Nama tidak cocok dengan nomor absen "+num+". Periksa lagi ejaannya atau buka daftar kelas."; return; }
+    ME=s; sessSet(s.no); view="beranda"; subv=null; qz=null; render(); toast("Selamat datang, "+s.nama.split(" ")[0]+".");
+  });
+}
 
-  function renderGreeting(){
-    const hour = new Date().getHours();
-    document.getElementById("greetTime").textContent = hour < 11 ? "Selamat pagi, semangat belajar" : hour < 15 ? "Selamat siang, tetap fokus" : hour < 18 ? "Selamat sore, sedikit lagi" : "Selamat malam, jangan lupa istirahat";
-    document.getElementById("greetName").textContent = "Assalamu'alaikum" + (currentStudent ? ", " + currentStudent.nama.split(" ")[0] : "");
-    document.getElementById("todayDate").textContent = new Date().toLocaleDateString("id-ID", {weekday:"long", day:"numeric", month:"long", year:"numeric"});
-  }
+/* ---------- Shell ---------- */
+function renderApp(){
+  const nav = ME.teacher ? NAV_T : NAV_S;
+  const ini = ME.nama.trim()[0].toUpperCase();
+  const navBtns = nav.map(([id,l,i])=>`<button data-act="go" data-v="${id}" ${view===id?'aria-current="page"':''}>${ic(i)}<span>${l}</span></button>`).join("");
+  const tabBtns = nav.map(([id,l,i])=>`<button data-act="go" data-v="${id}" ${view===id?'aria-current="page"':''}>${ic(i,22)}<span>${l}</span></button>`).join("");
+  $("#root").innerHTML = `
+  <div class="app">
+    <aside class="side">
+      <div class="brand"><svg viewBox="0 0 220 220" aria-hidden="true"><path d="${starPath(110,110,104)}" fill="#F2B233"/><path d="${starPath(110,110,60)}" fill="#17206A"/></svg><div><b>Bintang 8A</b><span>Portal PAI</span></div></div>
+      <nav class="nav" aria-label="Menu utama">${navBtns}</nav>
+      <div class="me"><div class="av">${esc(ini)}</div><div><div class="nm">${esc(ME.nama)}</div><div class="sb">${ME.teacher?"Guru PAI":"Absen "+ME.no+", kelas 8A"}</div></div><button class="iconbtn" data-act="logout" aria-label="Keluar">${ic("out")}</button></div>
+    </aside>
+    <main class="main" id="main"></main>
+    <nav class="tabbar" aria-label="Menu utama">${tabBtns}</nav>
+  </div>`;
+  renderView();
+}
+function renderView(){
+  const nav = ME.teacher ? NAV_T : NAV_S;
+  document.querySelectorAll('[data-act="go"]').forEach(b=>{ b.dataset.v===view ? b.setAttribute("aria-current","page") : b.removeAttribute("aria-current"); });
+  const fns = { beranda:vBeranda, materi:vMateri, tugas:vTugas, evaluasi:vEvaluasi, nilai:vNilai, info:vInfo, t_ring:tRing, t_rekap:tRekap, t_tugas:tTugas, t_info:tInfo };
+  const body = (fns[view]||vBeranda)();
+  const showTop = !(view==="materi"&&subv) && !(view==="tugas"&&subv);
+  $("#main").innerHTML = (showTop?`<header class="top"><h1>${TITLES[view]}</h1><span class="chip" id="salatchip"><i></i>${salatText()}</span><button class="btn ghost sm mtop" data-act="logout">Keluar</button></header>`:"") + body;
+  animateArcs();
+}
+function go(v,s=null){ view=v; subv=s; if(v!=="evaluasi") qz=null; renderView(); window.scrollTo({top:0}); }
+setInterval(()=>{ const c=$("#salatchip"); if(c) c.innerHTML="<i></i>"+salatText(); },30000);
 
-  /* ============ MATERI ============ */
-  const materiListEl = document.getElementById("materiList");
-  function renderMateri(){
-    materiListEl.innerHTML = "";
-    MATERI.forEach((m, idx)=>{
-      const done = !!progress.materiDone[m.id];
-      const card = document.createElement("div");
-      card.className = "materi-card";
-      card.innerHTML = `
-        <div class="materi-head" data-id="${m.id}">
-          <div class="materi-num">${String(idx+1).padStart(2,"0")}</div>
-          <div class="materi-titles"><div class="bab">${m.bab}</div><h3>${m.judul}</h3></div>
-          <div class="materi-status"><span class="pill ${!currentStudent ? "neutral" : (done ? "good" : "gold")}">${!currentStudent ? "Login untuk menandai" : (done ? "Selesai dipelajari" : "Belum dipelajari")}</span></div>
-          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+/* =====================================================
+   TAMPILAN SISWA
+===================================================== */
+function vBeranda(){
+  const no=ME.no, fin=finalScore(no), p=progress(no), pr=predikat(fin);
+  const done=DB.done[no]||[];
+  const nextB = BAB.find(b=>!done.includes(b.id));
+  const upcoming = TASKS.filter(t=>!sub(t.id,no)).sort((a,b)=>dueAt(a)-dueAt(b)).slice(0,3);
+  const anns = [...DB.ann].sort((a,b)=>b.at-a.at).slice(0,2);
+  const ay = AYAT[Math.floor(Date.now()/864e5)%AYAT.length];
+  return `
+  <section class="hero">
+    <div>
+      <h2>Assalamualaikum, ${esc(ME.nama.split(" ")[0])}.</h2>
+      <p>${p===0?"Mulai dari materi Bab 1 dan isi bintangmu langkah demi langkah.":"Kamu sudah menyelesaikan "+p+"% langkah belajar semester ini. Lanjutkan, sedikit lagi bintangmu penuh."}</p>
+      <div class="facts">
+        <div><b>${done.length}/${BAB.length}</b>materi selesai</div>
+        <div><b>${TASKS.filter(t=>sub(t.id,no)).length}/${TASKS.length}</b>tugas terkirim</div>
+        <div><b>${Object.keys(DB.quiz[no]||{}).length}/${BAB.length}</b>kuis dikerjakan</div>
+        <div><b>${ME.hadir}%</b>kehadiran</div>
+      </div>
+    </div>
+    <div class="starbox" role="img" aria-label="Kemajuan belajar ${p} persen">${starRing(p,"rgba(255,255,255,.18)","#F2B233")}<div class="ctr"><b>${p}%</b><span>langkah belajar</span></div></div>
+  </section>
+  <div class="grid2">
+    <div class="card">
+      <h3>Lanjutkan belajar</h3>
+      ${nextB?`<p class="mut">Bab ${BAB.indexOf(nextB)+1}, sekitar ${nextB.m} menit membaca.</p><h3 style="margin-top:6px;font-size:22px">${esc(nextB.t)}</h3><p class="mut" style="margin:8px 0 16px">${esc(nextB.ringkas[0].slice(0,120))}…</p><button class="btn gold" data-act="openbab" data-id="${nextB.id}">Buka materi</button>`:`<div class="empty">Semua materi sudah kamu selesaikan. Barakallah!</div>`}
+    </div>
+    <div class="card">
+      <h3>Tenggat terdekat</h3>
+      ${upcoming.length?upcoming.map(t=>{const st=taskStatus(t,no);return `<button class="task" style="margin-bottom:10px" data-act="opentask" data-id="${t.id}"><div><h3>${esc(t.t)}</h3><div class="sub">Tenggat ${fmtDate(dueAt(t))}</div></div><span class="pill ${st.c}">${st.l}</span></button>`}).join(""):`<div class="empty">Tidak ada tugas yang menunggu. Kerja bagus.</div>`}
+    </div>
+    <div class="card">
+      <h3>Pengumuman</h3>
+      <div class="stack">${anns.map(a=>`<div><b>${esc(a.t)}</b><p class="mut" style="font-size:15px">${esc(a.b)}</p></div>`).join("")}</div>
+    </div>
+    <div class="card" style="background:var(--hero);color:#fff;border-color:transparent">
+      <h3 style="color:#fff">Ayat hari ini</h3>
+      <p class="ar" lang="ar" style="font-size:26px;color:#fff">${ay.ar}</p>
+      <p style="color:#F2B233;font-weight:700;margin-top:8px">${esc(ay.src)}</p>
+      <p style="color:#C9D1FF;font-size:15px;margin-top:4px">${esc(ay.id)}</p>
+    </div>
+  </div>`;
+}
+
+function vMateri(){
+  const no=ME.no, done=DB.done[no]||[];
+  if(subv){
+    const b=BAB.find(x=>x.id===subv), i=BAB.indexOf(b), isDone=done.includes(b.id);
+    return `
+    <button class="back" data-act="go" data-v="materi">${ic("back",18)} Semua materi</button>
+    <div class="row between" style="align-items:flex-start;flex-wrap:wrap;margin-bottom:18px"><div><span class="pill info">Bab ${i+1}</span><h2 style="font-size:clamp(28px,4vw,42px);margin-top:10px;font-weight:800">${esc(b.t)}</h2></div><span class="pill ${isDone?"ok":""}">${isDone?"Sudah dipelajari":"Sekitar "+b.m+" menit"}</span></div>
+    <div class="article">
+      <div class="card txt">
+        <h3>Ringkasan</h3>
+        ${b.ringkas.map(p=>`<p>${esc(p)}</p>`).join("")}
+        <h3 style="margin-top:26px">Poin penting</h3>
+        <ul>${b.poin.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
+        <div class="fb"><b>Tahukah kamu?</b><p style="margin-top:4px">${esc(b.fakta)}</p></div>
+      </div>
+      <div class="stack">
+        <div class="dalil"><p class="ar" lang="ar">${b.dalil.ar}</p><p class="src">${esc(b.dalil.src)}</p><p class="idn">${esc(b.dalil.id)}</p></div>
+        <div class="card">
+          <h3>Sudah paham?</h3>
+          <div class="row" style="flex-wrap:wrap">
+            <button class="btn ${isDone?"ghost":""}" data-act="toggledone" data-id="${b.id}">${isDone?"Batalkan tanda selesai":"Tandai selesai"}</button>
+            <button class="btn gold" data-act="startquiz" data-id="${b.id}">Kerjakan kuis</button>
+          </div>
         </div>
-        <div class="materi-body">
-          <div class="materi-body-inner">
-            <p>${m.ringkasan}</p>
-            <ul>${m.poin.map(p=>`<li>${p}</li>`).join("")}</ul>
-            <div class="ayat-box"><div class="ar">${m.ayatAr}</div><div>${m.ayatId}</div></div>
-            <button class="mark-btn ${done ? "done":""} ${!currentStudent ? "locked":""}" data-id="${m.id}">${!currentStudent ? "Login untuk menandai" : (done ? "✓ Sudah dipelajari" : "Tandai sudah dipelajari")}</button>
-          </div>
-        </div>`;
-      materiListEl.appendChild(card);
-    });
-    materiListEl.querySelectorAll(".materi-head").forEach(h=>{
-      h.addEventListener("click", ()=> h.closest(".materi-card").classList.toggle("open"));
-    });
-    materiListEl.querySelectorAll(".mark-btn").forEach(b=>{
-      b.addEventListener("click", (e)=>{
-        e.stopPropagation();
-        if(!currentStudent){ openLogin(); return; }
-        const id = b.dataset.id;
-        progress.materiDone[id] = !progress.materiDone[id];
-        persist();
-        renderMateri();
-      });
-    });
-  }
-
-  /* ============ TUGAS ============ */
-  const tugasListEl = document.getElementById("tugasList");
-  function renderTugas(){
-    tugasListEl.innerHTML = "";
-    TUGAS.forEach(t=>{
-      const materi = MATERI.find(m=>m.id===t.materiId);
-      const done = !!progress.tugasDone[t.id];
-      const item = document.createElement("div");
-      item.className = "tugas-item" + (done ? " done" : "");
-      item.innerHTML = `
-        <button class="check-toggle ${done ? "on":""}" data-id="${t.id}" aria-label="Tandai selesai">
-          ${done ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>' : ""}
-        </button>
-        <div class="tugas-text">
-          <h4>${t.judul}</h4>
-          <div class="meta">${materi ? materi.bab + " · " + materi.judul : ""} · Tenggat: ${t.tenggat}</div>
-          <p>${t.deskripsi}</p>
-        </div>`;
-      tugasListEl.appendChild(item);
-    });
-    tugasListEl.querySelectorAll(".check-toggle").forEach(b=>{
-      b.addEventListener("click", ()=>{
-        if(!currentStudent){ openLogin(); return; }
-        const id = b.dataset.id;
-        progress.tugasDone[id] = !progress.tugasDone[id];
-        persist();
-        renderTugas();
-      });
-    });
-  }
-
-  /* ============ EVALUASI ============ */
-  const quizPicker = document.getElementById("quizPicker");
-  const quizRunnerWrap = document.getElementById("quizRunnerWrap");
-  function predikat(skor){
-    if(skor >= 90) return {label:"Sangat Baik (A)", cls:"good"};
-    if(skor >= 80) return {label:"Baik (B)", cls:"good"};
-    if(skor >= 70) return {label:"Cukup (C)", cls:"gold"};
-    return {label:"Perlu Bimbingan (D)", cls:"warn"};
-  }
-  function renderQuizPicker(){
-    quizPicker.innerHTML = "";
-    quizRunnerWrap.style.display = "none";
-    quizPicker.style.display = "grid";
-    QUIZZES.forEach(q=>{
-      const materi = MATERI.find(m=>m.id===q.materiId);
-      const result = progress.nilai[q.id];
-      const card = document.createElement("div");
-      card.className = "quiz-card";
-      card.innerHTML = `
-        <div class="bab">${materi ? materi.bab : ""}</div>
-        <h3>${q.judul}</h3>
-        <div class="info">${q.soal.length} soal pilihan ganda ${result ? "· Skor terakhir: <b>"+result.skor+"</b>" : (currentStudent ? "· Belum dikerjakan" : "· Login untuk mengerjakan")}</div>
-        <button class="${result ? "retake-btn":"start-btn"}" data-id="${q.id}">${result ? "Kerjakan ulang" : "Mulai evaluasi"}</button>`;
-      quizPicker.appendChild(card);
-    });
-    quizPicker.querySelectorAll("[data-id]").forEach(b=>{
-      b.addEventListener("click", ()=>{
-        if(!currentStudent){ openLogin(); return; }
-        startQuiz(b.dataset.id);
-      });
-    });
-  }
-  function startQuiz(quizId){
-    const quiz = QUIZZES.find(q=>q.id===quizId);
-    if(!quiz) return;
-    quizPicker.style.display = "none";
-    quizRunnerWrap.style.display = "block";
-    let current = 0;
-    const answers = new Array(quiz.soal.length).fill(null);
-    function renderQuestion(){
-      const s = quiz.soal[current];
-      quizRunnerWrap.innerHTML = `
-        <div class="quiz-runner">
-          <div class="qprog">Soal ${current+1} dari ${quiz.soal.length} · ${quiz.judul}</div>
-          <div class="qprog-track"><div class="qprog-fill" style="width:${((current+1)/quiz.soal.length)*100}%"></div></div>
-          <div class="q-text">${s.p}</div>
-          <div id="optWrap"></div>
-          <div class="quiz-nav">
-            <button class="nav-arrow ghost" id="prevBtn" ${current===0 ? "disabled":""}>Sebelumnya</button>
-            <button class="nav-arrow" id="nextBtn">${current === quiz.soal.length-1 ? "Selesai" : "Berikutnya"}</button>
-          </div>
-        </div>`;
-      const optWrap = quizRunnerWrap.querySelector("#optWrap");
-      s.opsi.forEach((op, i)=>{
-        const el = document.createElement("div");
-        el.className = "opt" + (answers[current]===i ? " selected":"");
-        el.innerHTML = `<span class="letter">${String.fromCharCode(65+i)}</span><span>${op}</span>`;
-        el.addEventListener("click", ()=>{ answers[current] = i; renderQuestion(); });
-        optWrap.appendChild(el);
-      });
-      quizRunnerWrap.querySelector("#prevBtn").addEventListener("click", ()=>{ if(current>0){ current--; renderQuestion(); } });
-      quizRunnerWrap.querySelector("#nextBtn").addEventListener("click", ()=>{
-        if(current < quiz.soal.length-1){ current++; renderQuestion(); } else { finishQuiz(); }
-      });
-    }
-    function finishQuiz(){
-      let correct = 0;
-      quiz.soal.forEach((s,i)=>{ if(answers[i]===s.j) correct++; });
-      const skor = Math.round((correct/quiz.soal.length)*100);
-      progress.nilai[quiz.id] = {skor, tanggal:new Date().toLocaleDateString("id-ID", {day:"numeric", month:"short", year:"numeric"})};
-      persist();
-      const pr = predikat(skor);
-      const reviewHtml = quiz.soal.map((s,i)=>{
-        const isRight = answers[i]===s.j;
-        return `<div class="review-item"><div class="qi">${i+1}. ${s.p}</div><div class="ai ${isRight ? "right":"wrong"}">Jawabanmu: ${answers[i]===null ? "(kosong)" : s.opsi[answers[i]]} ${isRight ? "— Benar" : "— Kurang tepat, jawaban benar: " + s.opsi[s.j]}</div></div>`;
-      }).join("");
-      quizRunnerWrap.innerHTML = `
-        <div class="quiz-runner">
-          <div class="result-box">
-            <div class="score-ring" style="--pct:${skor}"><div class="inner"><b>${skor}</b><span>dari 100</span></div></div>
-            <div class="predikat">${pr.label}</div>
-            <div class="desc">Kamu menjawab benar ${correct} dari ${quiz.soal.length} soal pada ${quiz.judul}.</div>
-            <button class="nav-arrow" id="backToList">Kembali ke daftar evaluasi</button>
-          </div>
-          <div class="review-list">${reviewHtml}</div>
-        </div>`;
-      quizRunnerWrap.querySelector("#backToList").addEventListener("click", ()=> renderQuizPicker());
-    }
-    renderQuestion();
-  }
-
-  /* ============ RIWAYAT SAYA ============ */
-  function renderRiwayat(){
-    const el = document.getElementById("riwayatContent");
-    if(!currentStudent){
-      el.innerHTML = `
-        <div class="gate-box">
-          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-          <h3>Riwayat belum bisa ditampilkan</h3>
-          <p>Login terlebih dahulu dengan memilih namamu dari daftar kelas, agar nilai, status materi, tugas, dan evaluasi kamu bisa ditampilkan di sini.</p>
-          <button class="login-btn" id="gateLoginBtn" style="margin:0 auto;">Masuk sekarang</button>
-        </div>`;
-      document.getElementById("gateLoginBtn").addEventListener("click", openLogin);
-      return;
-    }
-
-    const materiDoneCount = MATERI.filter(m=>progress.materiDone[m.id]).length;
-    const tugasDoneCount = TUGAS.filter(t=>progress.tugasDone[t.id]).length;
-    const evalDoneCount = QUIZZES.filter(q=>progress.nilai[q.id]).length;
-    const scores = QUIZZES.map(q=>progress.nilai[q.id]?.skor).filter(s=>s!==undefined);
-    const rata = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : null;
-
-    let html = `
-      <div class="riwayat-head">
-        <div class="av">${initials(currentStudent.nama)}</div>
-        <div><h2>${currentStudent.nama}</h2><div class="k">Kelas ${currentStudent.kelas} · Riwayat Belajar PAI</div></div>
       </div>
-      <div class="nilai-summary">
-        <div class="stat-card"><div class="num">${rata===null ? "-" : rata}</div><div class="lbl">Rata-rata nilai evaluasi</div></div>
-        <div class="stat-card"><div class="num">${materiDoneCount}/${MATERI.length}</div><div class="lbl">Bab dipelajari</div></div>
-        <div class="stat-card"><div class="num">${tugasDoneCount}/${TUGAS.length}</div><div class="lbl">Tugas selesai</div></div>
-      </div>
+    </div>`;
+  }
+  return `<div class="grid3">${BAB.map((b,i)=>{const d=done.includes(b.id);return `
+    <button class="bab" data-act="openbab" data-id="${b.id}"><span class="no">Bab ${i+1}</span><h3>${esc(b.t)}</h3><div class="ft"><span>${b.m} menit</span><span class="pill ${d?"ok":""}">${d?"Selesai":"Belum dibaca"}</span></div></button>`}).join("")}</div>`;
+}
 
-      <div class="subhead">Status Materi</div>
-      <div class="status-list">
-        ${MATERI.map(m=>{
-          const done = !!progress.materiDone[m.id];
-          return `<div class="status-row"><span>${m.bab} — ${m.judul}</span><span class="pill ${done ? "good":"warn"}">${done ? "Selesai dipelajari" : "Belum dipelajari"}</span></div>`;
-        }).join("")}
+function vTugas(){
+  const no=ME.no;
+  if(subv){
+    const t=TASKS.find(x=>x.id===subv), s=sub(t.id,no), st=taskStatus(t,no), locked=s&&s.score!=null;
+    const b=BAB.find(x=>x.id===t.bab);
+    return `
+    <button class="back" data-act="go" data-v="tugas">${ic("back",18)} Semua tugas</button>
+    <div class="card">
+      <div class="row between" style="flex-wrap:wrap;align-items:flex-start"><div><span class="pill info">Bab ${BAB.indexOf(b)+1}: ${esc(b.t)}</span><h2 style="font-size:clamp(24px,3.4vw,34px);margin-top:10px">${esc(t.t)}</h2></div><span class="pill ${st.c}">${st.l}</span></div>
+      <p style="margin-top:14px;max-width:66ch">${esc(t.d)}</p>
+      <p class="mut" style="margin-top:8px;font-size:14px">Tenggat ${fmtDate(dueAt(t),{weekday:"long",day:"numeric",month:"long"})}, 23.59.${(!s&&dueAt(t)<Date.now())?" Tugas ini sudah lewat tenggat, tetap bisa dikumpulkan.":""}</p>
+      <div style="margin-top:18px">
+        <label for="ans" style="font-weight:600;display:block;margin-bottom:6px">Jawabanmu atau tautan file</label>
+        <textarea id="ans" ${locked?"disabled":""} placeholder="Tulis jawabanmu di sini, atau tempel tautan Google Drive.">${esc(s?s.text:"")}</textarea>
       </div>
+      ${locked?`<div class="fb"><b>Nilai ${s.score}${s.score>=KKM?", tuntas":", perlu perbaikan"}</b>${s.fb?`<p style="margin-top:4px">Catatan guru: ${esc(s.fb)}</p>`:""}</div>`
+        :`<div class="row" style="margin-top:16px;flex-wrap:wrap"><button class="btn" data-act="submittask" data-id="${t.id}">${s?"Perbarui jawaban":"Kumpulkan tugas"}</button>${s?`<span class="mut" style="font-size:14px">Terkirim ${fmtDate(s.at,{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</span>`:""}</div>`}
+    </div>`;
+  }
+  const fl = { semua:()=>true, belum:t=>!sub(t.id,no), kirim:t=>sub(t.id,no)&&sub(t.id,no).score==null, nilai:t=>sub(t.id,no)&&sub(t.id,no).score!=null };
+  const tabs=[["semua","Semua"],["belum","Belum dikerjakan"],["kirim","Terkirim"],["nilai","Sudah dinilai"]];
+  const list = TASKS.filter(fl[tfilter]).sort((a,b)=>dueAt(a)-dueAt(b));
+  return `
+  <div class="tabs" role="group" aria-label="Saring tugas">${tabs.map(([k,l])=>`<button data-act="tfilter" data-k="${k}" aria-pressed="${tfilter===k}">${l}</button>`).join("")}</div>
+  <div class="stack">${list.length?list.map(t=>{const st=taskStatus(t,no);const b=BAB.find(x=>x.id===t.bab);return `
+    <button class="task" data-act="opentask" data-id="${t.id}"><div><h3>${esc(t.t)}</h3><div class="sub">Bab ${BAB.indexOf(b)+1}, tenggat ${fmtDate(dueAt(t))}</div></div><span class="pill ${st.c}">${st.l}</span></button>`}).join(""):`<div class="empty">Tidak ada tugas pada kategori ini.</div>`}</div>`;
+}
 
-      <div class="subhead">Status Tugas</div>
-      <div class="status-list">
-        ${TUGAS.map(t=>{
-          const done = !!progress.tugasDone[t.id];
-          return `<div class="status-row"><span>${t.judul}</span><span class="pill ${done ? "good":"warn"}">${done ? "Selesai" : "Belum selesai"}</span></div>`;
-        }).join("")}
-      </div>
-
-      <div class="subhead">Riwayat Evaluasi &amp; Nilai</div>
-      <div class="chart-panel"><div id="riwayatChart"></div></div>
-      <div class="overflow-x">
-        <table class="nilai-table">
-          <thead><tr><th>Bab</th><th>Evaluasi</th><th>Skor</th><th>Predikat</th><th>Tanggal</th></tr></thead>
-          <tbody id="riwayatTbody"></tbody>
-        </table>
+function vEvaluasi(){
+  const no=ME.no;
+  if(qz){
+    const b=BAB.find(x=>x.id===qz.bab), Q=QUIZ[b.id];
+    if(qz.fin){
+      const pct=Math.round(qz.score/Q.length*100), best=DB.quiz[no][b.id].best;
+      const wrong=Q.map((q,i)=>({q,i})).filter(x=>qz.ans[x.i]!==x.q.a);
+      return `
+      <div class="card" style="max-width:720px">
+        <div class="starbox lt" style="max-width:200px;margin:0 auto 10px">${starRing(pct,"var(--line)","var(--tq)")}<div class="ctr"><b>${pct}</b><span>${qz.score} dari ${Q.length} benar</span></div></div>
+        <h2 style="text-align:center;font-size:28px">${pct===100?"Sempurna!":pct>=KKM?"Bagus, kamu tuntas.":"Belum tuntas, coba lagi ya."}</h2>
+        <p class="mut" style="text-align:center;margin-top:6px">Nilai tertinggimu di kuis ini: ${best}</p>
+        ${wrong.length?`<h3 style="margin-top:24px">Yang perlu diperbaiki</h3>${wrong.map(w=>`<div class="fb" style="background:var(--sf2)"><b>${esc(w.q.q)}</b><p style="margin-top:4px">Jawaban benar: ${esc(w.q.o[w.q.a])}</p></div>`).join("")}`:""}
+        <div class="row" style="margin-top:22px;flex-wrap:wrap"><button class="btn" data-act="startquiz" data-id="${b.id}">Ulangi kuis</button><button class="btn ghost" data-act="openbab" data-id="${b.id}">Baca materi</button><button class="btn ghost" data-act="quizexit">Kembali</button></div>
       </div>`;
-    el.innerHTML = html;
-
-    const chartWrap = document.getElementById("riwayatChart");
-    const tbody = document.getElementById("riwayatTbody");
-    let rows = "";
-    QUIZZES.forEach(q=>{
-      const materi = MATERI.find(m=>m.id===q.materiId);
-      const r = progress.nilai[q.id];
-      const skor = r ? r.skor : 0;
-      const barRow = document.createElement("div");
-      barRow.className = "bar-row";
-      barRow.innerHTML = `<div class="lab">${materi.bab}</div><div class="bar-track"><div class="bar-fill" style="width:${skor}%"></div></div><div class="val">${r ? skor : "–"}</div>`;
-      chartWrap.appendChild(barRow);
-      if(r){
-        const pr = predikat(r.skor);
-        rows += `<tr><td>${materi.bab}</td><td>${q.judul}</td><td><b>${r.skor}</b></td><td><span class="pill ${pr.cls}">${pr.label}</span></td><td>${r.tanggal}</td></tr>`;
-      }
-    });
-    tbody.innerHTML = rows || `<tr><td colspan="5" class="empty-note">Belum ada evaluasi yang dikerjakan.</td></tr>`;
-  }
-
-  /* ============ INFO & BERANDA ============ */
-  function renderInfo(){
-    const list = document.getElementById("infoList");
-    list.innerHTML = INFO.map(i=>`
-      <div class="info-item">
-        <div class="info-date"><div class="d">${i.tgl}</div><div class="m">${i.bln}</div></div>
-        <div class="info-body"><h4>${i.judul}</h4><p>${i.isi}</p></div>
-      </div>`).join("");
-    document.getElementById("infoPreview").innerHTML = INFO.slice(0,3).map(i=>`<div class="mini-row"><span>${i.judul}</span><span class="pill gold">${i.tgl} ${i.bln}</span></div>`).join("");
-  }
-  function renderBeranda(){
-    document.getElementById("statSiswa").textContent = ROSTER.length;
-    document.getElementById("babPreview").innerHTML = MATERI.map(m=>`<div class="mini-row"><span>${m.bab} — ${m.judul}</span></div>`).join("");
-    const teaser = document.getElementById("authTeaser");
-    if(currentStudent){
-      teaser.innerHTML = `<p>Kamu login sebagai <b>${currentStudent.nama}</b> (Kelas ${currentStudent.kelas}). Lihat progres belajarmu di menu <b>Riwayat Saya</b>.</p>`;
-    } else {
-      teaser.innerHTML = `<p>Kamu belum login. <b>Masuk</b> dengan memilih namamu agar nilai, tugas, dan status materimu tersimpan.</p>`;
     }
+    const cur=Q[qz.i], ans=qz.sel!=null;
+    return `
+    <button class="back" data-act="quizexit">${ic("back",18)} Keluar dari kuis</button>
+    <div class="card" style="max-width:720px">
+      <div class="row between"><b>${esc(b.t)}</b><span class="mut">Soal ${qz.i+1} dari ${Q.length}</span></div>
+      <div class="bar" style="margin:12px 0 22px"><i style="width:${(qz.i+(ans?1:0))/Q.length*100}%"></i></div>
+      <h2 style="font-size:24px;font-weight:700">${esc(cur.q)}</h2>
+      <div role="group" aria-label="Pilihan jawaban">${cur.o.map((o,i)=>`<button class="opt ${ans?(i===cur.a?"right":(i===qz.sel?"wrong":"")):""}" data-act="pick" data-i="${i}" ${ans?"disabled":""}><span class="l">${"ABCD"[i]}</span><span>${esc(o)}</span></button>`).join("")}</div>
+      ${ans?`<p style="margin-top:14px;font-weight:700;color:${qz.sel===cur.a?"var(--ok)":"var(--rose)"}">${qz.sel===cur.a?"Benar.":"Kurang tepat. Jawaban yang benar: "+esc(cur.o[cur.a])+"."}</p><button class="btn" style="margin-top:14px" data-act="qnext">${qz.i===Q.length-1?"Lihat hasil":"Soal berikutnya"}</button>`:""}
+    </div>`;
   }
+  const q=DB.quiz[no]||{};
+  return `<p class="mut" style="margin:-8px 0 18px;max-width:60ch">Setiap kuis berisi 4 soal pilihan ganda. Boleh diulang sebanyak yang kamu mau, nilai tertinggi yang dipakai.</p>
+  <div class="grid3">${BAB.map((b,i)=>{const r=q[b.id];return `
+    <div class="bab" style="cursor:default"><span class="no">Bab ${i+1}</span><h3>${esc(b.t)}</h3>
+      <div class="ft"><span class="pill ${r?(r.best>=KKM?"ok":"warn"):""}">${r?"Nilai tertinggi "+r.best:"Belum dikerjakan"}</span><button class="btn sm ${r?"ghost":"gold"}" data-act="startquiz" data-id="${b.id}">${r?"Ulangi":"Mulai"}</button></div></div>`}).join("")}</div>`;
+}
 
-  function renderAll(){
-    renderAuthArea();
-    renderGreeting();
-    renderMateri();
-    renderTugas();
-    renderQuizPicker();
-    renderInfo();
-    renderBeranda();
-    const riwayatActive = document.getElementById("view-riwayat").classList.contains("active");
-    if(riwayatActive) renderRiwayat();
+function vNilai(){
+  const no=ME.no, c=comps(no), fin=finalScore(no), pr=predikat(fin);
+  const names={tugas:"Tugas",kuis:"Kuis",pts:"Tengah semester",pas:"Akhir semester",sikap:"Sikap"};
+  const rows=Object.keys(W).map(k=>{
+    const v=c[k], a=classAvg(k);
+    return `<div>${names[k]}<div class="mut" style="font-size:12px">bobot ${W[k]}%</div></div>
+      <div class="track" role="img" aria-label="${names[k]} ${v==null?"belum ada":Math.round(v)}, rata-rata kelas ${a==null?"belum ada":Math.round(a)}">${v!=null?`<i style="width:${v}%"></i>`:""}${a!=null?`<em style="width:${a}%"></em>`:""}<u style="left:${KKM}%"></u></div>
+      <b>${r1(v)}</b>`;
+  }).join("");
+  const scored=Object.keys(W).filter(k=>c[k]!=null).sort((a,b)=>c[a]-c[b]);
+  const low=scored[0];
+  const saran = fin==null?"Nilaimu akan muncul setelah tugas dinilai dan kuis dikerjakan."
+    : c[low]<KKM ? `Komponen ${names[low].toLowerCase()} masih di bawah KKM ${KKM}. Fokuskan belajarmu di sana, lalu ulangi kuis terkait.`
+    : `Semua komponen yang sudah dinilai sudah mencapai KKM. Pertahankan, dan coba ulangi kuis untuk mengejar nilai 100.`;
+  const graded=TASKS.filter(t=>sub(t.id,no)&&sub(t.id,no).score!=null);
+  const qs=DB.quiz[no]||{};
+  return `
+  <div class="grid2">
+    <div class="card" style="display:grid;place-items:center;text-align:center">
+      <div class="starbox lt" style="max-width:230px" role="img" aria-label="Nilai akhir sementara ${fin==null?"belum ada":Math.round(fin)}">${starRing(fin||0,"var(--line)","var(--brand)")}<div class="ctr"><b>${fin==null?"–":Math.round(fin)}</b><span>nilai sementara</span></div></div>
+      <div style="margin-top:14px"><span class="pill ${pr.c}" style="height:32px;font-size:15px">Predikat ${pr.k}: ${pr.t}</span></div>
+      <p class="mut" style="margin-top:12px;max-width:34ch;font-size:15px">${saran}</p>
+    </div>
+    <div class="card">
+      <h3>Rincian komponen</h3>
+      <div class="cmp">${rows}</div>
+      <div class="legend"><span>Nilaimu</span><span class="g">Rata-rata kelas</span><span class="r">KKM ${KKM}</span></div>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:18px">
+    <div class="card"><h3>Nilai tugas</h3>${graded.length?graded.map(t=>`<div class="row between" style="padding:9px 0;border-top:1px solid var(--line)"><span>${esc(t.t)}</span><b>${sub(t.id,no).score}</b></div>`).join(""):`<div class="empty">Belum ada tugas yang dinilai.</div>`}</div>
+    <div class="card"><h3>Nilai kuis</h3>${Object.keys(qs).length?BAB.filter(b=>qs[b.id]).map(b=>`<div class="row between" style="padding:9px 0;border-top:1px solid var(--line)"><span>Bab ${BAB.indexOf(b)+1}: ${esc(b.t)}</span><b>${qs[b.id].best}</b></div>`).join(""):`<div class="empty">Belum ada kuis yang dikerjakan. Mulai dari menu Evaluasi.</div>`}</div>
+  </div>
+  <p class="mut" style="margin-top:14px;font-size:14px">Nilai akhir dihitung dari komponen yang sudah ada. Komponen yang belum dinilai tidak mengurangi nilaimu.</p>`;
+}
+
+function vInfo(){
+  const anns=[...DB.ann].sort((a,b)=>b.at-a.at);
+  return `
+  <div class="grid2">
+    <div class="card"><h3>Pengumuman</h3><div class="stack">${anns.map(a=>`<div style="padding-top:12px;border-top:1px solid var(--line)"><div class="row between"><b>${esc(a.t)}</b><span class="mut" style="font-size:13px">${fmtDate(a.at)}</span></div><p class="mut" style="font-size:15px">${esc(a.b)}</p></div>`).join("")}</div></div>
+    <div class="stack">
+      <div class="card"><h3>Jadwal PAI kelas 8A</h3>
+        <div class="row between" style="padding:8px 0"><span>Selasa</span><b>07.30 sampai 08.50</b></div>
+        <div class="row between" style="padding:8px 0;border-top:1px solid var(--line)"><span>Kamis</span><b>10.00 sampai 10.40</b></div>
+        <p class="mut" style="font-size:13px;margin-top:8px">Contoh jadwal. Guru dapat menyesuaikan.</p></div>
+      <div class="card"><h3>Cara penilaian</h3>
+        ${Object.keys(W).map(k=>`<div class="row between" style="padding:6px 0"><span>${{tugas:"Tugas",kuis:"Kuis",pts:"Penilaian tengah semester",pas:"Penilaian akhir semester",sikap:"Sikap dan kehadiran"}[k]}</span><b>${W[k]}%</b></div>`).join("")}
+        <p class="mut" style="font-size:14px;margin-top:8px">KKM ${KKM}. Di bawah ${KKM} mendapat remedial.</p></div>
+    </div>
+    <div class="card"><h3>Tata tertib belajar</h3>
+      <ul style="padding-left:18px;margin:0" class="stack"><li>Datang tepat waktu dan mulai pelajaran dengan doa.</li><li>Kerjakan tugas dengan jujur. Menyalin jawaban teman tidak dinilai.</li><li>Kuis boleh diulang, tetapi kerjakan sendiri.</li><li>Bertanya adalah bagian dari belajar, jangan malu.</li></ul></div>
+    <div class="card"><h3>Waktu salat hari ini</h3>
+      ${SALAT.map(([n,t])=>`<div class="row between" style="padding:7px 0;border-top:1px solid var(--line)"><span>${n}</span><b>${t}</b></div>`).join("")}
+      <p class="mut" style="font-size:13px;margin-top:8px">Perkiraan untuk wilayah Jabodetabek. Ikuti jadwal resmi masjid setempat.</p></div>
+  </div>`;
+}
+
+/* =====================================================
+   TAMPILAN GURU
+===================================================== */
+function tRing(){
+  const st=DB.students, fins=st.map(s=>({s,f:finalScore(s.no)}));
+  const valid=fins.filter(x=>x.f!=null), a=avg(valid.map(x=>x.f));
+  const below=valid.filter(x=>x.f<KKM);
+  const dist={A:0,B:0,C:0,D:0}; valid.forEach(x=>dist[predikat(x.f).k]++);
+  const mx=Math.max(1,...Object.values(dist));
+  const sentAll=TASKS.map(t=>({t,n:st.filter(s=>sub(t.id,s.no)).length}));
+  return `
+  <div class="grid3" style="margin-bottom:18px">
+    <div class="card"><div class="mut">Rata-rata nilai kelas</div><h2 style="font-size:44px;margin-top:4px">${r1(a)}</h2></div>
+    <div class="card"><div class="mut">Siswa di bawah KKM ${KKM}</div><h2 style="font-size:44px;margin-top:4px;color:${below.length?"var(--rose)":"var(--ok)"}">${below.length}</h2></div>
+    <div class="card"><div class="mut">Jumlah siswa</div><h2 style="font-size:44px;margin-top:4px">${st.length}</h2></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h3>Sebaran predikat</h3>${Object.entries(dist).map(([k,v])=>`<div class="row" style="margin:10px 0"><b style="width:22px">${k}</b><div class="bar" style="flex:1;height:14px"><i style="width:${v/mx*100}%;background:${k==="D"?"var(--rose)":k==="C"?"var(--gold)":"var(--tq)"}"></i></div><span style="width:28px;text-align:right">${v}</span></div>`).join("")}</div>
+    <div class="card"><h3>Pengumpulan tugas</h3>${sentAll.map(x=>`<div style="margin:12px 0"><div class="row between" style="font-size:15px"><span>${esc(x.t.t)}</span><b>${x.n}/${st.length}</b></div><div class="bar" style="margin-top:6px"><i style="width:${x.n/st.length*100}%"></i></div></div>`).join("")}</div>
+    <div class="card" style="grid-column:1/-1"><h3>Perlu perhatian</h3>${below.length?`<div class="row" style="flex-wrap:wrap;gap:8px">${below.map(x=>`<span class="pill bad">${x.s.no}. ${esc(x.s.nama)} (${Math.round(x.f)})</span>`).join("")}</div>`:`<div class="empty">Semua siswa yang sudah bernilai mencapai KKM.</div>`}</div>
+  </div>`;
+}
+function tRekap(){
+  return `<p class="mut" style="margin:-8px 0 16px">Ubah nilai PTS, PAS, atau sikap langsung pada tabel. Perubahan tersimpan otomatis.</p>
+  <div class="scroll"><table><thead><tr><th class="sticky">No</th><th>Nama</th><th>Tugas</th><th>Kuis</th><th>PTS</th><th>PAS</th><th>Sikap</th><th>Hadir</th><th>Akhir</th><th>Predikat</th></tr></thead><tbody>
+  ${DB.students.map(s=>{const c=comps(s.no),f=finalScore(s.no),p=predikat(f);return `<tr>
+    <td class="sticky">${s.no}</td><td>${esc(s.nama)}</td><td>${r1(c.tugas)}</td><td>${r1(c.kuis)}</td>
+    <td><input type="number" min="0" max="100" value="${s.pts??""}" data-field="pts" data-no="${s.no}" aria-label="PTS ${esc(s.nama)}"></td>
+    <td><input type="number" min="0" max="100" value="${s.pas??""}" data-field="pas" data-no="${s.no}" aria-label="PAS ${esc(s.nama)}"></td>
+    <td><input type="number" min="0" max="100" value="${s.sikap??""}" data-field="sikap" data-no="${s.no}" aria-label="Sikap ${esc(s.nama)}"></td>
+    <td>${s.hadir}%</td><td><b id="fin${s.no}">${r1(f)}</b></td><td><span class="pill ${p.c}" id="pr${s.no}">${p.k}</span></td></tr>`}).join("")}
+  </tbody></table></div>`;
+}
+function tTugas(){
+  const cur = tSel || TASKS[TASKS.length>2?2:0].id;
+  const t = TASKS.find(x=>x.id===cur);
+  return `
+  <div class="field" style="margin:-4px 0 18px;max-width:460px"><label for="tsel">Pilih tugas</label><select id="tsel" class="plain" data-change="tsel">${TASKS.map(x=>`<option value="${x.id}" ${x.id===cur?"selected":""}>${esc(x.t)}</option>`).join("")}</select></div>
+  <div class="stack">${DB.students.map(s=>{const x=sub(t.id,s.no);return `
+    <div class="card" style="padding:16px 20px">
+      <div class="row between" style="flex-wrap:wrap"><b>${s.no}. ${esc(s.nama)}</b>${x?`<span class="pill ${x.score!=null?"ok":"info"}">${x.score!=null?"Dinilai "+x.score:"Perlu dinilai"}</span>`:`<span class="pill bad">Belum mengumpulkan</span>`}</div>
+      ${x?`<p class="mut" style="margin:8px 0;white-space:pre-wrap;font-size:15px">${esc(x.text)}</p>
+      <div class="row" style="flex-wrap:wrap;gap:10px"><input id="sc_${t.id}_${s.no}" type="number" min="0" max="100" value="${x.score??""}" placeholder="Nilai" aria-label="Nilai ${esc(s.nama)}" style="width:90px;height:40px;border-radius:10px;border:1.5px solid var(--line);background:var(--sf);text-align:center"><input id="fb_${t.id}_${s.no}" type="text" class="plain" value="${esc(x.fb||"")}" placeholder="Catatan untuk siswa" style="flex:1;min-width:180px;height:40px"><button class="btn sm" data-act="grade" data-t="${t.id}" data-no="${s.no}">Simpan</button></div>`:""}
+    </div>`}).join("")}</div>`;
+}
+function tInfo(){
+  const anns=[...DB.ann].sort((a,b)=>b.at-a.at);
+  return `<div class="grid2">
+    <div class="card"><h3>Tulis pengumuman</h3>
+      <div class="field" style="margin-top:0"><label for="at">Judul</label><input id="at" type="text" class="plain" placeholder="Contoh: Remedial Bab 1"></div>
+      <div class="field"><label for="ab2">Isi</label><textarea id="ab2" style="min-height:110px" placeholder="Tulis pesan untuk kelas 8A"></textarea></div>
+      <button class="btn" style="margin-top:14px" data-act="postann">Kirim ke kelas</button></div>
+    <div class="card"><h3>Pengumuman aktif</h3><div class="stack">${anns.length?anns.map(a=>`<div class="row between" style="align-items:flex-start;padding-top:12px;border-top:1px solid var(--line)"><div><b>${esc(a.t)}</b><p class="mut" style="font-size:15px">${esc(a.b)}</p></div><button class="btn ghost sm" data-act="delann" data-id="${a.id}">Hapus</button></div>`).join(""):`<div class="empty">Belum ada pengumuman.</div>`}</div></div>
+  </div>`;
+}
+
+/* =====================================================
+   EVENT
+===================================================== */
+document.addEventListener("click", e=>{
+  const el=e.target.closest("[data-act]"); if(!el) return;
+  const a=el.dataset.act, d=el.dataset;
+  if(a==="fill"){ const s=stu(+d.no); $("#nm").value=s.nama; $("#ab").value=s.no; $("#err").textContent=""; $("#nm").scrollIntoView({block:"center"}); }
+  else if(a==="go") go(d.v);
+  else if(a==="logout"){ ME=null; sessSet(null); subv=null; qz=null; render(); }
+  else if(a==="openbab") go("materi",d.id);
+  else if(a==="opentask") go("tugas",d.id);
+  else if(a==="toggledone"){ const l=DB.done[ME.no]||(DB.done[ME.no]=[]); const i=l.indexOf(d.id); i>=0?l.splice(i,1):l.push(d.id); save(); renderView(); toast(i>=0?"Tanda selesai dibatalkan.":"Materi ditandai selesai."); }
+  else if(a==="tfilter"){ tfilter=d.k; renderView(); }
+  else if(a==="submittask"){
+    const v=$("#ans").value.trim();
+    if(v.length<5){ toast("Jawabanmu masih kosong. Tulis dulu atau tempel tautan."); $("#ans").focus(); return; }
+    const key=d.id+"_"+ME.no, old=DB.subs[key];
+    DB.subs[key]={text:v,at:Date.now(),score:null,fb:old?old.fb:""}; save(); renderView(); toast(old?"Jawaban diperbarui.":"Tugas terkumpul.");
   }
+  else if(a==="startquiz"){ qz={bab:d.id,i:0,sel:null,score:0,ans:[],fin:false}; view="evaluasi"; subv=null; renderView(); window.scrollTo({top:0}); }
+  else if(a==="quizexit"){ qz=null; renderView(); }
+  else if(a==="pick"){
+    if(qz.sel!=null) return; const Q=QUIZ[qz.bab]; qz.sel=+d.i; qz.ans[qz.i]=qz.sel; if(qz.sel===Q[qz.i].a) qz.score++; renderView();
+  }
+  else if(a==="qnext"){
+    const Q=QUIZ[qz.bab];
+    if(qz.i>=Q.length-1){
+      qz.fin=true; const pct=Math.round(qz.score/Q.length*100);
+      const all=DB.quiz[ME.no]||(DB.quiz[ME.no]={}); const prev=all[qz.bab];
+      all[qz.bab]={best:Math.max(prev?prev.best:0,pct),last:pct,at:Date.now()}; save();
+    } else { qz.i++; qz.sel=null; }
+    renderView(); window.scrollTo({top:0});
+  }
+  else if(a==="grade"){
+    const sc=$("#sc_"+d.t+"_"+d.no).value, fb=$("#fb_"+d.t+"_"+d.no).value.trim(), x=DB.subs[d.t+"_"+d.no];
+    if(sc===""||+sc<0||+sc>100){ toast("Isi nilai antara 0 sampai 100."); return; }
+    x.score=Math.round(+sc); x.fb=fb; save(); tSel=d.t; renderView(); toast("Nilai tersimpan.");
+  }
+  else if(a==="postann"){
+    const t=$("#at").value.trim(), b=$("#ab2").value.trim();
+    if(!t||!b){ toast("Judul dan isi pengumuman harus diisi."); return; }
+    DB.ann.push({id:"a"+Date.now(),t,b,at:Date.now()}); save(); renderView(); toast("Pengumuman terkirim.");
+  }
+  else if(a==="delann"){ DB.ann=DB.ann.filter(x=>x.id!==d.id); save(); renderView(); toast("Pengumuman dihapus."); }
+});
+document.addEventListener("change", e=>{
+  const el=e.target;
+  if(el.dataset.field){
+    const s=stu(+el.dataset.no); const v=el.value===""?null:Math.max(0,Math.min(100,Math.round(+el.value)));
+    s[el.dataset.field]=v; save();
+    const f=finalScore(s.no), p=predikat(f);
+    $("#fin"+s.no).textContent=r1(f); const pe=$("#pr"+s.no); pe.textContent=p.k; pe.className="pill "+p.c;
+    toast("Nilai "+s.nama.split(" ")[0]+" diperbarui.");
+  }
+  if(el.dataset.change==="tsel"){ tSel=el.value; renderView(); }
+});
 
-  restoreSession();
-  renderAll();
-
-})();
+boot();
 </script>
 </body>
 </html>
